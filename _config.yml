@@ -280,4 +280,18 @@ defaults:
       share: true
       related: true
 
+collections:
+  dl:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  # _dl
+  - scope:
+      path: ""
+      type: dl
+    values:
+      layout: single
+      author_profile: false
+      share: true
 
