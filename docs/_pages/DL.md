@@ -1,5 +1,5 @@
 ---
-title: DL
+title: Dl
 layout: collection
 permalink: /dl/
 collection: dl
