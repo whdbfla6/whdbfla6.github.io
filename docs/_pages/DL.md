@@ -1,8 +1,8 @@
 ---
 title: DL
 layout: collection
-permalink: /DL/
-collection: DL
+permalink: /dl/
+collection: dl
 entries_layout: grid
 classes: wide
 ---

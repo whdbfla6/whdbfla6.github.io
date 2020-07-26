@@ -187,10 +187,10 @@ collections:
 
 # Defaults
 defaults:
-  # _DL
+  # _dl
   - scope:
       path: ""
-      type: DL
+      type: dl
     values:
       layout: single
       author_profile: false
