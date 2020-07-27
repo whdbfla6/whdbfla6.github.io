@@ -1,3 +1,8 @@
+--- 
+layout: single
+title: example
+---
+
 ## 딥러닝이란?
 
 1. 인공지능
