@@ -6,7 +6,7 @@ title: CNN
 # CNN(Convolution Neural Network)
 
 ## 0. Introduction
-  image: /assets/images/CNN8.png
+![cnn]({{ site.url }}/assets/images/cnn8.png)
 
 convolution neural network는 말 그대로 **convolution** 연산이 들어가는 뉴럴 네트워크를 의미한다. CNN은 고양이가 이미지를 볼 때 바라보는 위치에 따라서 자극받는 뇌의 부분이 다르다는 점을 착안해 만들어졌다고 한다. CNN은 convolution연산 외에도 중간중간 RELU와 max-pooling을 적용하며, 마지막에는 필수적으로 FC(Fully Connected Layer)을 통과하여 labeling을 하게 된다.
 
