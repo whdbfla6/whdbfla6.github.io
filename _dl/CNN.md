@@ -45,7 +45,6 @@ Input data가 3x28x28로 3개의 채널로 구성되어있다고 하자. 이에 
 구체적인 연산과정은 아래와 같다. 이미지의 각 채널과 filter의 연산과정으로 3개의 결과물이 출력되며 이 결과물들의 각 원소별 덧셈 과정을 통해 최종적인 결과물이 산출된다. 즉 채널의 수와 상관없이 **하나의 feature map**이 만들어진다는 것이다
 
 ![cnn](https://taewanmerepo.github.io/2018/01/cnn/conv2.jpg)
-[이미지 출처처](http://taewan.kim/post/cnn/)
 
 **out_channel**은 몇 종류의 필터를 사용되는지에 따라 결정된다. 채널의 수와 상관없이 하나의 필터를 사용할 때 하나의 feature map이 만들어지며, 4종류의 필터를 사용한다면 총 4개의 feature map이 만들어질 것이다. 이 때 out_channel 값이 4다
 
