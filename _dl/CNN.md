@@ -6,7 +6,7 @@ title: CNN
 # CNN(Convolution Neural Network)
 
 ## 0. Introduction
-![cnn]({{ site.url }}/assets/images/cnn8.png)
+![cnn](whdbfla6.github.io/assets/images/cnn8.png)
 
 convolution neural network는 말 그대로 **convolution** 연산이 들어가는 뉴럴 네트워크를 의미한다. CNN은 고양이가 이미지를 볼 때 바라보는 위치에 따라서 자극받는 뇌의 부분이 다르다는 점을 착안해 만들어졌다고 한다. CNN은 convolution연산 외에도 중간중간 RELU와 max-pooling을 적용하며, 마지막에는 필수적으로 FC(Fully Connected Layer)을 통과하여 labeling을 하게 된다.
 
@@ -17,18 +17,18 @@ convolution, max-pooling, FC가 무엇인지 하나하나 알아보자
 ## 1. Convolution? 
 
 
-![CNN1.jpg](img/CNN1.jpg)
+![CNN1.jpg](whdbfla6.github.io/assets/images/CNN1.jpg)
 
 
 Convolution은 이미지 위에서 stride만큼 filter를 이동시키면서 겹쳐지는 부분의 각 원소의 값을 곱해서 더한 값을 출력으로 하는 연산이다. 이 과정을 통해서 이미지의 특성을 추출해내는 것이다
 
 위 그림에서 첫번째 연산은 $ 1*1 + 2*0 + 3*1 + 0*0 + 1*1 + 5*0 + 1*1 + 0*0 + 2*1 = 8  $ 이다. convolution은 이 과정을 필터를 이동시키면서 진행해 최종적인 output을 도출한다. 
 
-![CNN](img/gif1.gif)
+![CNN](whdbfla6.github.io/assets/images/gif1.gif)
 
 
 ### 1-1 이미지
-![CNN2.jpg](img/CNN2.jpg)
+![CNN2.jpg](whdbfla6.github.io/assets/images/CNN2.jpg)
 
 input data인 이미지는 다음과 같은 요소로 구성된다:  **batch_size, channel, height, width**
 
@@ -41,10 +41,10 @@ input data인 이미지는 다음과 같은 요소로 구성된다:  **batch_siz
 #### 1) in_channels, out_channels, kernel_size
 
 Input data가 3x28x28로 3개의 채널로 구성되어있다고 하자. 이에 따라 필터 또한 3개의 channel로 구성되어야 하며, in_channels의 값은 3이다. kernel_size는 필터의 가로/세로 길이를 나타내는데, 필터가 3x5x5 사이즈로 구성되어 있으면 kernel_size는 5다
-![CNN5.jpg](img/CNN5.jpg)
+![CNN5.jpg](whdbfla6.github.io/assets/images/CNN5.jpg)
 
 구체적인 연산과정은 아래와 같다. 이미지의 각 채널과 filter의 연산과정으로 3개의 결과물이 출력되며 이 결과물들의 각 원소별 덧셈 과정을 통해 최종적인 결과물이 산출된다. 즉 채널의 수와 상관없이 하나의 feature map이 만들어진다는 것이다
-![CNN6jpg](img/CNN6.jpg)
+![CNN6jpg](whdbfla6.github.io/assets/images/CNN6.jpg)
 
 out_channel은 몇 종류의 필터를 사용되는지에 따라 결정된다. 채널의 수와 상관없이 하나의 필터를 사용할 때 하나의 feature map이 만들어지며, 4종류의 필터를 사용한다면 총 4개의 feature map이 만들어질 것이다. 이 때 out_channel 값이 4다
 
@@ -54,13 +54,13 @@ out_channel은 몇 종류의 필터를 사용되는지에 따라 결정된다. �
 
 stride는 필터를 이동시킬 때 몇칸 씩 이동하는지를 나타내는 숫자다. 아래는 필터가 한칸씩 이동하고 있기 때문에 Sride는 1이다
 
-![SegmentLocal](img/gif1.gif)
+![SegmentLocal](whdbfla6.github.io/assets/images/gif1.gif)
 
 #### 3) padding
 
 padding은 input data인 이미지 외각에 특정 값으로 채워주는 것을 의미하며, 일반적으로 0으로 채워주기 때문에 zero-padding이라 한다. padding은 convolution 연산 이후에 정보가 손실되는 것을 막기 위해 사용하는 것인데, 자세히 알아보자.
 
-![CNN7.jpg](img/CNN7.jpg)
+![CNN7.jpg](whdbfla6.github.io/assets/images/CNN7.jpg)
 
 
 convolution 연산 이후에 나오는 output size를 구하는 공식은 다음과 같다: $((inputsize) - (filtersize))  /  (Stride) + 1 $
@@ -80,7 +80,7 @@ Stride가 2일 때 $(7 - 3)  /  2 +1 = 3$,  3x3사이즈가 output size다
 
 ## 2. Max-Pooling(=Sampling) & FC
 
-![CNN9.jpg](img/CNN9.jpg)
+![CNN9.jpg](whdbfla6.github.io/assets/images/CNN9.jpg)
 
 max-pooling 작업은 일반적으로 convolution 연산 이후에 진행이 되는데, size가 2라고 하면 각각의 2x2 사이즈에서 가장 큰 값을 출력하는 과정이다. 이는 가장 큰 값이 이미지의 특징을 대표한다는 점을 기반으로 하고 있다. Max pooling은 왜 하는 걸까? convolution 연산 output을 그대로 사용하게 되면 수많은 feature가 만들어지고 이는 오버피팅의 문제를 가져온다. Max-pooling은 기존의 이미지 사이즈를 반으로 줄여(Size 2 기준) 오버피팅을 방지해주며 더 나아가 연산 과정을 줄여준다
 
