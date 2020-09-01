@@ -284,12 +284,23 @@ collections:
   dl:
     output: true
     permalink: /:collection/:path/
+  ml:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _dl
   - scope:
       path: ""
       type: dl
+    values:
+      layout: single
+      author_profile: false
+      share: true
+  # _ml
+  - scope:
+      path: ""
+      type: ml
     values:
       layout: single
       author_profile: false
