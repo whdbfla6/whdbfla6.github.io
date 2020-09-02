@@ -9,7 +9,7 @@ comments: true
 
 ## VGGNET
 
-![vgg](http://whdbfla6.github.io/assets/images/vgg1.JPG)
+![vgg](http://whdbfla6.github.io/assets/images/vgg1.jpg)
 
 **VGG16**은 K. Simonyan and A. Zisserman에 의해 제안된 convolution neural network 중 하나다. 이 모델은 1000개의 class로 구분되는 1400만장의 이미지를 분류하는데 높은 정확성을 보였다. VGG NET의 큰 특징은 1) 기존의 모델에 비해 depth가 증가했다 2)모든 Convolution layer에서 kernel size가 3인 필터를 사용했다는 점이다.
 
