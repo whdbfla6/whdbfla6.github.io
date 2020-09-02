@@ -50,13 +50,13 @@ validation set을 통해 validation MSE를 구하고 이를 test MSE의 추정�
 - validation set approach에서 발생한 단점을 줄이고자, train data의 양을 늘림
 - 전체 데이터에서 하나의 데이터만 제외해 n-1개의 데이터로 모델을 fitting한 후, 하나의 데이터에 대해서 MSE를 구한다. 이 과정을 반복해서 얻는 n개의 MSE 평균을 Test MSE의 추정치로 사용
 
-$$ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} MSE_i $$
+$ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} MSE_i $
 
 - 장점
     1. 데이터를 반만 사용하던 validation set approach와 달리 n-1개의 데이터를 사용해 모델을 fitting하기 때문에 bias가 적다. 즉 test MSE를 overestimate하지 않는다
     2. 추정치n개의 값에 대한 평균을 test MSE의 추정치로 사용하기 때문에 Training/ validation 구분에 따라 추정치가 달라질 일이 없다
     3. OLS 회귀분석에서는 n번의 과정을 반복할 필요없이 아래의 식을 통해 한번에 test MSE의 추정치를 구할 수 있다
-    $$ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} (\frac{y_i-\hat{y_i}}{1-h_{ii}})^2 $$
+    $ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} (\frac{y_i-\hat{y_i}}{1-h_{ii}})^2 $
     증명은 뒷부분 참고!
    
    
@@ -75,7 +75,7 @@ $$ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} MSE_i $$
  - 전체 데이터를 k개의 그룹으로 랜덤하게 나누고, k-1개의 그룹을 통해 모델을 fitting하고 그 나머지 그룹을 validation set으로 활용하는 방법
  - k개의 MSE를 구해서 그 평균값을 Test MSE의 추정치로 사용한다
  - K값은 주로 5나 10을 사용한다고 한다
- $$ CV(n) = \dfrac{1}{k} \sum^{k}_{i=1} MSE_i $$
+ $ CV(n) = \dfrac{1}{k} \sum^{k}_{i=1} MSE_i $
  - 장점
      1. LOOCV보다 연산속도가 더 빠르다
      2. Test MSE 추정치의 분산이 더 줄어든다 : bias - variance trade off 관계
@@ -89,8 +89,8 @@ $$ CV(n) = \dfrac{1}{N} \sum^{N}_{i=1} MSE_i $$
      - the validation approach는 반개의 데이터만 활용해서 bias가 큰 반면에 LOOCV와 K-fold cross validations는 상대적으로 작은 bias를 갖는다
  - Variance: LOOCV가 하나의 데이터만 제외하고 fitting을 한 것이기 때문에 n개의 fitting 결과가 거의 동일하다. 
      - 수학적으로 이해하면 Variance를 구할 때 MSE의 공분산 값이 포함되는데, correlation이 높아지면 분산이 커짐
-      $$ Var(CV(k)) = VAR(\dfrac{1}{k} MSE_1 + \dfrac{1}{k} MSE_2 + ... + \dfrac{1}{k} MSE_K) $$
-      $$ = \dfrac{1}{k^2}[VAR(MSE_1) + VAR(MSE_2) + ... + VAR(MSE_K)+ ... + \sum^{}_{i=/=j} COV(MSE_i,MSE_J)] $$
+      $ Var(CV(k)) = VAR(\dfrac{1}{k} MSE_1 + \dfrac{1}{k} MSE_2 + ... + \dfrac{1}{k} MSE_K) $
+      $ = \dfrac{1}{k^2}[VAR(MSE_1) + VAR(MSE_2) + ... + VAR(MSE_K)+ ... + \sum^{}_{i=/=j} COV(MSE_i,MSE_J)] $
    - 다른 데이터 셋으로 Loocv를 구하면 값이 많이 달라진다. 
 
 
