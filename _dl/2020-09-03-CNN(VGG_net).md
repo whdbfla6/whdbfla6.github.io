@@ -66,7 +66,7 @@ def make_layers(cfg, batch_norm=False):
     return nn.Sequential(*layers)
 ```
 
-`for v in cfg`에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
+`def make_layers(cfg, batch_norm=False)`는 FC를 통과하기 이전의 layer를 만드는 method다. for v in cfg`에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
 
 > v가 숫자인 경우
 
@@ -257,5 +257,6 @@ CNN
 설명을 위해서 코드 순서를 뒤죽박죽 나열했는데, 정돈된 코드는 [링크](https://github.com/deeplearningzerotoall/PyTorch/blob/master/lab-10_5_1_Advance-cnn(VGG).ipynb)에 있다.
 
 참고문헌<br/>
+[모두를위한딥러닝시즌2](https://deeplearningzerotoall.github.io/season2/)
 [Neurohive-VGG16](https://neurohive.io/en/popular-networks/vgg16/)<br/>
 [89douner](https://89douner.tistory.com/61)
