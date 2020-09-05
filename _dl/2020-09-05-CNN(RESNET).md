@@ -6,21 +6,21 @@ comments: true
 
 ---
 
-이 글에서는 2015년 ILSVRC에서 우승을 한 RESNET에 대해 다뤄보려고 한다. RESNET은 152개의 층을 갖는 알고리즘으로 이전에 소개한 VGG16 VGG19에 비해 엄청 깊어졌다. 그렇다면 네트워크의 깊이가 깊어지면 반드시 성능이 좋아지는지에 대해 의문이 들 것이다. 이를 확인하기 위해 RESNET 연구진들은 Convolution layer와 FC로 구성된 20층 56층의 네트워크를 각각 구성해 비교를 해보았다. 
+이 글에서는 2015년 ILSVRC에서 우승을 한 RESNET에 대해 다뤄보려고 한다. RESNET은 152개의 층을 갖는 알고리즘으로 이전에 소개한 VGG16 VGG19에 비해 엄청 깊어졌다. 그렇다면 네트워크의 깊이가 깊어지면 반드시 성능이 좋아지는지 것일까? 이를 확인하기 위해 RESNET 연구진들은 Convolution layer와 FC로 구성된 20층 56층의 네트워크를 각각 구성해 비교를 해보았다. 
 
 ![RESNET](http://whdbfla6.github.io/assets/images/resnet1.JPG)
 
-이 그래프를 보면 56 layer의 네트워크가 20 layer의 네트워크보다 test error가 더 높은 것을 확인할 수 있다. 즉 depth가 깊어진다고 반드시 좋은 성능으로 이어지지 않는다는 말이다. 여기서 resnet 연구진들은 RESIDUAL BLOCK을 고안해 모델의 깊이는 깊어지면서 성능은 더욱 개선된 네트워크를 개발했다.
+이 그래프를 보면 56 layer의 네트워크가 20 layer로 구성된 네트워크보다 test error가 더 높은 것을 확인할 수 있다. 즉 depth가 깊어진다고 반드시 좋은 성능으로 이어지지 않는다는 말이다. 여기서 resnet 연구진들은 RESIDUAL BLOCK을 고안해 모델의 깊이는 깊어지면서 성능은 더욱 개선된 네트워크를 개발했다.
 
 ## Residual Block
 
-우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이(각 픽셀 값) label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각과 함께 x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식에서 아래의 그림과 같이 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
+우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이(각 픽셀 값) label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각으로 x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식에서 아래의 그림과 같이 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
 
 $H(x)-x$ 최소화, $H(x)=x$
 
 ![RESNET](http://whdbfla6.github.io/assets/images/resnet2.JPG)
 
-하지만 H(x)-x를 최소화하는 방식은 망이 엄청 깊어지는 경우 gradient vanishing 문제가 발생한다. resnet처럼 152개의 층이 존재하면, backpropagation을 진행할 수록 미분 값이 작아져 앞에 위치한 layer의 영향력이 작아진다는 것이다. 이를 해결하기 위해서 학습을 시킨 후에 x값을 더해 H(x)=F(x)+x가 x가 되도록 학습을 진행한다. 즉 F(x)가 0에 가까워지도록 학습하는 것이다. 이렇게 되면 미분 값이 $F'(x)+1$로 최소 미분 값이 1이 되어 gradient vanishing 문제를 해결해준다.
+하지만 H(x)-x를 최소화하는 방식은 망이 엄청 깊어지는 경우 gradient vanishing 문제가 발생한다. resnet처럼 152개의 층이 존재하면, backpropagation을 진행할 수록 미분 값이 작아져 앞에 위치한 layer의 영향력이 작아진다는 것이다. 이를 해결하기 위해서 학습을 시킨 후에 x값을 더해 $H(x)=F(x)+x$가 x가 되도록 학습을 진행한다. 즉 F(x)가 0에 가까워지도록 학습하는 것이다. 이렇게 되면 미분 값이 $F'(x)+1$로 1이 최소치로 보장되기 때문에 gradient vanishing 문제를 해결해준다.
 
 $H(x)-x$ 최소화 $ = F(x)+x-x$ 최소화, 즉 $F(x)$를 0에 가깝게 해라
 
@@ -91,7 +91,7 @@ class Bottleneck(nn.Module):
         return out
 ```
 
-`forward(self, x)`부분을 살펴보면 Bottleneck은 convolution 연산을 3번 수행하는 것을 확인할 수 있다. `self.conv1(x)` ` self.conv3(out)`은 conv1x1을 진행하며 stide값은 기본값 1로 고정되어 있는 반면 `self.conv2(out)`은 conv3x3을 수행하며 stride 값은 원하는 값을 넣을 수 있다. 모든 layer를 통과한 후에 `out += identity`을 통해 x값을 더해주게 된다. 중요한 것은 모든 layer를 통과 한 후의 size와 input x의 차원이 같아야 덧셈 연산을 진행할 수 있다는 것인데, `self.downsample(x)`를 통해 차원을 동일시할 수 있다. bottleneck의 경우 `class ResNet(nn.Module)`의 layer1 ~ layer4를 구성하는데 사용 될 것이다.
+`forward(self, x)`부분을 살펴보면 Bottleneck은 convolution 연산을 3번 수행하는 것을 확인할 수 있다. `self.conv1(x)` ` self.conv3(out)`은 conv1x1, stide값은 기본값 1로 고정되어 있는 반면 `self.conv2(out)`은 conv3x3을 수행하며 stride 값은 원하는 값을 넣을 수 있다. 모든 layer를 통과한 후에 `out += identity`을 통해 x값을 더해주게 된다. 중요한 것은 모든 layer를 통과 한 후의 size와 input x의 차원이 같아야 덧셈 연산을 진행할 수 있다는 것인데, 차원이 다른 경우 `self.downsample(x)`를 통해 차원을 동일시할 수 있다. bottleneck은 layer1 ~ layer4를 구성하는데 사용 될 것이다.
 
 
 ```python
@@ -176,7 +176,7 @@ def resnet50(pretrained=False, **kwargs):
     return model
 ```
 
-`forward`부분에서 layer를 제외하고는 다른 네트워크에서도 많이 다룬 내용이기 때문에 생략하도록 하겠다. 지금부터 layer1 구성을 위해 필요한 함수를 하나하나 살펴볼 것이다
+`forward`에서 layer 부분을 제외하고는 다른 네트워크에서도 많이 다룬 내용이기에 생략하도록 하겠다. 지금부터 layer1 구성을 위해 필요한 함수를 하나하나 살펴볼 것이다
 
 #### 1. model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
 
@@ -208,11 +208,14 @@ planes = 64
 
 앞서 downsample은 input과 output 차원이 다른 경우 identity 덧셈 연산을 수행하기 위해 차원을 맞춰주는 작업이라고 언급했다. downsample은 1) stride값이 1이 아니거나 2) self.inplanes != planes * block.expansion인 경우 수행한다.
 
-    조건 1. stride != 1
+조건 1. stride != 1
+
 
 output size를 구하는 공식 $((inputsize) + (padding*2) - (filtersize))  /  (Stride) + 1 $ 에 따르면 stride값이 1이 아닌 경우 output size가 input size와 달라진다(현재 kernel_size=3, padding=1)
 
-    조건 2. self.inplanes != planes * block.expansion
+
+조건 2. self.inplanes != planes * block.expansion
+
 
 Bottleneck 함수를 살펴보면 `conv1x1(inplanes, planes)` `conv3x3(planes, planes, stride)` `conv1x1(planes, planes * self.expansion)` conv 연산을 3번 수행한다. in_channel은 첫번째 conv1x1의 inplanes 값이며, 연산을 3번 수행 후의 out_channel 값은  planes * self.expansion이다. 따라서 self.inplanes != planes * block.expansion인 경우 input output 차원이 달라질 것이다
 
@@ -222,9 +225,13 @@ Bottleneck 함수를 살펴보면 `conv1x1(inplanes, planes)` `conv3x3(planes, p
                 nn.BatchNorm2d(planes * block.expansion), 
             )
 ```
-            
-downsample은 다음과 같이 구성되는데, `identity = self.downsample(x)` identity를 downsample로 받아서 차원을 맞춰준 후에 output과 덧셈 연산이 수행된다
 
+```
+identity = self.downsample(x)
+out += identity
+```
+            
+downsample은 다음과 같이 구성되는데, 이는 conv를 모두 통과한 후에 나오는 output과 덧셈 연산이 이루어진다. 
 
 
 
@@ -240,7 +247,7 @@ Bottleneck을 한번 수행한 후에 self.inplanes값은 `planes * block.expans
 
 block = Bottleneck
 blocks = 3 
-self.inplanes = 256 <br/>
+self.inplanes = **256** <br/>
 expansion = 4 <br/>
 planes = 64
 
@@ -257,7 +264,7 @@ for _ in range(1, 3):
     layers.append(Bottleneck(256, 64))
 ```
 
-따라서 for문에서 Bottleneck(256,64)를 두번 반복하게 된다
+따라서 Bottleneck(256,64)를 두번 반복하게 된다
 
 > layer1 
 
@@ -269,8 +276,7 @@ Bottleneck(256, 64)
 
 ```
 
-layer 2 ~4는 layer1과 동일한 과정을 거치면 구할 수 있을 것이다.
-최종적인 resnet50의 형태는 아래와 같다
+layer 2 ~4는 layer1과 동일한 과정을 거치면 구할 수 있다. 최종적인 resnet50의 형태는 아래와 같다
 
 
 
