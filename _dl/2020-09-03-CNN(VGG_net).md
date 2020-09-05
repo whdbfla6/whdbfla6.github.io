@@ -1,6 +1,6 @@
 --- 
 layout: single
-title: CNN(VGG_net)
+title: CNN(VGGNET)
 use_math: true
 comments: true
 
