@@ -14,7 +14,7 @@ comments: true
 
 ## Residual Block
 
-우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이(각 픽셀 값) label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각으로 x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식에서 아래의 그림과 같이 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
+우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이(각 픽셀 값) label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각으로 x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식이 아닌 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
 
 $H(x)-x$ 최소화, $H(x)=x$
 
@@ -28,7 +28,7 @@ $H(x)-x$ 최소화 $ = F(x)+x-x$ 최소화, 즉 $F(x)$를 0에 가깝게 해라
 
 ## ResNet 코드 구성
 
-이제부터 resnet50을 직접 코드로 작성해 볼 것이다. resnet50은 conv1x1과 conv3x3 연산이 포함된 여러개의 bottleneck으로 구성된다. 따라서 RESNET class를 정의하기 전에 conv3x3 conv1x1 bottleneck을 구성하기 위한 함수를 정의할 것이다. Bottle neck 구조는 아래와 같다
+이제부터 resnet50을 직접 코드로 작성해 볼 것이다. resnet50은 conv1x1과 conv3x3 연산이 포함된 여러개의 bottleneck으로 구성된다. 따라서 RESNET class를 정의하기 전에 conv3x3 conv1x1 bottleneck 함수를 정의할 것이다. Bottle neck 구조는 아래와 같다
 
 ![RESNET](http://whdbfla6.github.io/assets/images/resnet4.JPG)
 
@@ -49,7 +49,7 @@ def conv1x1(in_planes, out_planes, stride=1):
     return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
 ```
 
-- conv3x3은 padding을 1로 설정하고 있으며, conv1x1은 padding이 없다
+conv3x3은 padding을 1로 설정하고 있으며, conv1x1은 padding이 없다
 
 
 ```python
@@ -91,7 +91,7 @@ class Bottleneck(nn.Module):
         return out
 ```
 
-`forward(self, x)`부분을 살펴보면 Bottleneck은 convolution 연산을 3번 수행하는 것을 확인할 수 있다. `self.conv1(x)` ` self.conv3(out)`은 conv1x1, stide값은 기본값 1로 고정되어 있는 반면 `self.conv2(out)`은 conv3x3을 수행하며 stride 값은 원하는 값을 넣을 수 있다. 모든 layer를 통과한 후에 `out += identity`을 통해 x값을 더해주게 된다. 중요한 것은 모든 layer를 통과 한 후의 size와 input x의 차원이 같아야 덧셈 연산을 진행할 수 있다는 것인데, 차원이 다른 경우 `self.downsample(x)`를 통해 차원을 동일시할 수 있다. bottleneck은 layer1 ~ layer4를 구성하는데 사용 될 것이다.
+`forward(self, x)`부분을 살펴보면 Bottleneck은 convolution 연산을 3번 수행한다. `self.conv1(x)` `self.conv3(x)`은 conv1x1, stide값은 기본값 1로 고정되어 있는 반면 `self.conv2(out)`은 conv3x3을 수행하며 stride 값은 원하는 값을 넣을 수 있다. 모든 layer를 통과한 후에 `out += identity`을 통해 x값을 더해주게 된다. 중요한 것은 모든 layer를 통과 한 후의 size와 input x의 차원이 같아야 덧셈 연산을 진행할 수 있다는 것인데, 차원이 다른 경우 `self.downsample(x)`를 통해 차원을 동일시할 수 있다. bottleneck은 layer1 ~ layer4를 구성하는데 사용 될 것이다.
 
 
 ```python
@@ -181,12 +181,12 @@ def resnet50(pretrained=False, **kwargs):
 #### 1. model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
 
 
-해당 모델은 Bottleneck을 사용하고 layer는 [3,4,6,3]이다. 따라서 layer[0] = 3 layer[1] 4 ..
+해당 모델은 Bottleneck을 사용하고 layer는 [3,4,6,3]이다. 따라서 layer[0] = 3, layer[1] 4 ..
 
 
 #### 2. self.layer1 = self._make_layer(block, planes = 64, layers[0])
 
-layer1은 make_layer함수를 통해 정의함. 정의한 모델의 input값을 넣어서 재구성하면, 
+layer1은 make_layer함수를 통해 정의한다. 정의한 모델의 input값을 넣어서 재구성하면, 
 
 ```
 self._make_layer(Bottleneck, 64, 3)
@@ -231,13 +231,13 @@ identity = self.downsample(x)
 out += identity
 ```
             
-downsample은 다음과 같이 구성되는데, 이는 conv를 모두 통과한 후에 나오는 output과 덧셈 연산이 이루어진다. 
+downsample은 다음과 같이 구성되는데, 이는 conv를 모두 통과한 후에 나오는 output과 덧셈 연산이 이루어질 것이다. 
 
 
 
 > layers.append(block(self.inplanes, planes, stride, downsample))
 
-downsample을 정의한 후에 layer에 bottleneck을 한번 append하게 된다. 정의한 모델의 input값을 넣어서 재구성하면, 
+downsample을 정의한 후에는 layer에 bottleneck을 한번 append하게 된다. 정의한 모델의 input값을 넣어서 재구성하면, 
 
 ```
 Bottleneck(64,64,1,downsample)

@@ -66,7 +66,7 @@ def make_layers(cfg, batch_norm=False):
     return nn.Sequential(*layers)
 ```
 
-`def make_layers(cfg, batch_norm=False)`는 FC를 통과하기 이전의 layer를 만드는 method다. for v in cfg`에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
+`def make_layers(cfg, batch_norm=False)`는 FC를 통과하기 이전의 layer를 만드는 method다. `for v in cfg`에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
 
 > v가 숫자인 경우
 
