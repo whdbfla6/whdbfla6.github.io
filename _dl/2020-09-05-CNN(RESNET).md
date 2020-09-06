@@ -194,14 +194,11 @@ self._make_layer(Bottleneck, 64, 3)
 
 기억해야 하는 사항들을 추가로 적어보면, 
 
-block = Bottleneck
-blocks = 3 
+block = Bottleneck <br/>
+blocks = 3 <br/>
 self.inplanes = 64 <br/>
 expansion = 4 <br/>
 planes = 64
-
-#### 3. def _make_layer(self, block, planes, blocks, stride=1)
-
 
 
 >  Downsample
@@ -245,8 +242,8 @@ Bottleneck(64,64,1,downsample)
 
 Bottleneck을 한번 수행한 후에 self.inplanes값은 `planes * block.expansion` 즉 64x4 = 256으로 업데이트 된다.
 
-block = Bottleneck
-blocks = 3 
+block = Bottleneck <br/>
+blocks = 3 <br/>
 self.inplanes = **256** <br/>
 expansion = 4 <br/>
 planes = 64
