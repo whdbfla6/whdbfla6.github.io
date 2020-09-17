@@ -305,6 +305,14 @@ defaults:
       layout: single
       author_profile: false
       share: true
+  # _nlp
+  - scope:
+      path: ""
+      type: nlp
+    values:
+      layout: single
+      author_profile: false
+      share: true
 
 # Math equation
 markdown: kramdown
