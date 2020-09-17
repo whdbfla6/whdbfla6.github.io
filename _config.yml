@@ -287,6 +287,9 @@ collections:
   ml:
     output: true
     permalink: /:collection/:path/
+  nlp:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _dl
