@@ -1,6 +1,7 @@
 --- 
 layout: single
 title: NLP(Lecture 8)
+usemathjax: true
 use_math: true
 comments: true
 
@@ -22,8 +23,10 @@ comments: true
 
 - 핵심 아이디어: 데이터로부터 통계적 모델을 학습하는 것 
 
-프랑스어를 영어로 번역한다고 하자. 프랑스어 문장이 주어졌을 때 가장 잘 번역된 영어 문장 y를 구하고 싶을 것이다. 이는 조건부 확률(x가 주어졌을 때 y가 나올 확률)을 최대화하는 y를 구하는 과정과 같다. 수식으로 표현하면 아래와 같다.
+프랑스어를 영어로 번역한다고 하자. 프랑스어 문장이 주어졌을 때 가장 잘 번역된 영어 문장 y를 구하고 싶을 것이다. 이는 조건부 확률(x가 주어졌을 때 y가 나올 확률)을 최대화하는 y를 구하는 과정과 같다. 수식으로 표현하면 아래와 같다. 
+
 $$argmax_yP(y|x)$$
+
 - 이는 베이즈 정리에 따라 두개의 요소로 분해할 수 있다
 
 $$= argmax_yP(x|y)P(y)$$
@@ -32,13 +35,13 @@ $$= argmax_yP(x|y)P(y)$$
 
 단일어 사전으로부터 y문장(sequence of words)이 나올 확률을 구하는 부분. 
 
-> $P(x|y)$: Translation model
+> $ P(x\mid y)$: Translation model
 
-쌍으로 구성된 데이터로부터 source language와 target language의 번역 모델을 만드는 부분으로, $P(x,a|y)$을 고려한다. 여기서 a는 *alignment*로 source langauge 단어들과 target 단어들의 상응하는 관계를 의미한다.
+쌍으로 구성된 데이터로부터 source language와 target language의 번역 모델을 만드는 부분으로, $P(x,a\mid y)$ 을 고려한다. 여기서 a는 *alignment*로 source langauge 단어들과 target 단어들의 상응하는 관계를 의미한다.
 ![](https://i.imgur.com/AVR7pBn.png)
 Alignment는 하나의 프랑스어가 여러개의 영어 단어로 표현되는 one-to-many관계 외에도, many-to-one/ many-to-many/ no counterpart 등 다양한 관계를 갖는다. 번역모델은 단어 간의 상응하는 관계, 문장에서의 위치, 하나의 단어가 몇개의 단어로 표현되는가 등 여러가지 요소를 고려한다. 
 
-$$ argmax_yP(x|y)P(y)$$
+$$ argmax_yP(x\mid y)P(y)$$
 
 이 수식을 계산하는데 모든 y에 대해서 확률 값을 계산한다면 비용이 많이 들 것이다. 따라서 heuristric search 알고리즘을 사용해서 너무 낮은 확률값을 갖는 y는 배제하는 방식으로 진행된다. 
 
@@ -69,6 +72,7 @@ source language 문장의 워드 임베딩이 인풋 값으로 들어가며, RNN
 인코더 RNN에서 생성된 마지막 Hidden state와 <start> 토큰을 받아서 예측값을 출력하고, 이 예측값을 다음 layer의 input값으로 들어가게 된다. 이 과정을 <END>토큰이 나올 때 까지 반복한다. 
 
 target sentence의 첫번째 단어인 $y_1$의 확률을 구하기 위해 source sentence $x$값을 조건으로 하며, $y_2$에 대한 확률은 $x$와 $y_1$을 조건으로 받는다는 점에서 seq2seq은 conditional language model이다. 이를 수식으로 표현하면 아래와 같다. 
+
 $$P(y|x) = P(y_1|x)P(y_2|x,y_1)...P(y_T|x,y_1,...,y_{T-1})$$
 
 > 훈련 방법
@@ -127,6 +131,7 @@ t시점 디코더 RNN의 hidden state를 $S_t$ 인코더 RNN의 hidden state를 
 $$score(s_t,h_i)=s_t^Th_i$$
 
 attention score $e^t$는 다음과 같다
+
 $$e^t = [s_t^Th_1,s_t^Th_2,...s_t^Th_N]$$
 
 > Attention distribution($\alpha^t$)
@@ -142,6 +147,7 @@ $$\alpha^t=softmax(e^t)$$
 ![](https://i.imgur.com/sx4jF7f.png)
 
 각 attention 가중치와 인코더 hidden state의 가중합을 통해 Attention output을 구한다.
+
 $$a_t=\sum_{i=1}^{N}{\alpha^th_i}$$
 
 > ${\hat{y}}$ 구하기
@@ -150,9 +156,13 @@ $$a_t=\sum_{i=1}^{N}{\alpha^th_i}$$
 Attention output **$a^t$** 와 디코더 hidden state $s_t$를 연결해준다 $v_t=[a^t;s_t]$
 
 ![](https://i.imgur.com/pIbghqg.png)
-$$\tilde{s_t}=tanh(W_c[a^t;s_t]+b_c)$$  $$\hat{y}=Softmax(W_y\tilde{s_t}+b_y)$$
+
+$$\tilde{s_t}=tanh(W_c[a^t;s_t]+b_c)$$ 
+
+$$\hat{y}=Softmax(W_y\tilde{s_t}+b_y)$$
 
     3) Attention 장점
+    
 - 병목현상을 해결
 - attention distribution을 통해서 decoder가 어떤 단어에 focus를 두었는지 알 수 있다.
 - vanishing gradient 문제 해결
