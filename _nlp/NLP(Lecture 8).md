@@ -31,6 +31,8 @@ $$argmax_yP(y|x)$$
 
 $$= argmax_yP(x|y)P(y)$$
 
+이 수식을 계산하는데 모든 y에 대해서 확률 값을 계산한다면 비용이 많이 들 것이다. 따라서 heuristric search 알고리즘을 사용해서 너무 낮은 확률값을 갖는 y는 배제하는 방식으로 진행된다.
+
 > $P(y)$: Language model
 
 단일어 사전으로부터 y문장(sequence of words)이 나올 확률을 구하는 부분. 
@@ -40,10 +42,6 @@ $$= argmax_yP(x|y)P(y)$$
 쌍으로 구성된 데이터로부터 source language와 target language의 번역 모델을 만드는 부분으로, $P(x,a\mid y)$ 을 고려한다. 여기서 a는 *alignment*로 source langauge 단어들과 target 단어들의 상응하는 관계를 의미한다.
 ![](https://i.imgur.com/AVR7pBn.png)
 Alignment는 하나의 프랑스어가 여러개의 영어 단어로 표현되는 one-to-many관계 외에도, many-to-one/ many-to-many/ no counterpart 등 다양한 관계를 갖는다. 번역모델은 단어 간의 상응하는 관계, 문장에서의 위치, 하나의 단어가 몇개의 단어로 표현되는가 등 여러가지 요소를 고려한다. 
-
-$$ argmax_yP(x\mid y)P(y)$$
-
-이 수식을 계산하는데 모든 y에 대해서 확률 값을 계산한다면 비용이 많이 들 것이다. 따라서 heuristric search 알고리즘을 사용해서 너무 낮은 확률값을 갖는 y는 배제하는 방식으로 진행된다. 
 
 - 단점
 
@@ -69,9 +67,11 @@ source language 문장의 워드 임베딩이 인풋 값으로 들어가며, RNN
 
 > 디코더 RNN : encoding이 주어진 상태에서 target sentence를 만들어내는 부분
 
-인코더 RNN에서 생성된 마지막 Hidden state와 <start> 토큰을 받아서 예측값을 출력하고, 이 예측값을 다음 layer의 input값으로 들어가게 된다. 이 과정을 <END>토큰이 나올 때 까지 반복한다. 
+인코더 RNN에서 생성된 마지막 Hidden state와 start 토큰을 받아서 예측값을 출력하고, 이 예측값을 다음 layer의 input값으로 들어가게 된다. 이 과정을 END토큰이 나올 때 까지 반복한다. 
 
-target sentence의 첫번째 단어인 $y_1$의 확률을 구하기 위해 source sentence $x$값을 조건으로 하며, $y_2$에 대한 확률은 $x$와 $y_1$을 조건으로 받는다는 점에서 seq2seq은 conditional language model이다. 이를 수식으로 표현하면 아래와 같다. 
+> conditional language model 
+
+target sentence의 첫번째 단어인 $y_1$이 나올 확률을 구하기 위해 source sentence $x$를 이용하고, $y_2$에 대한 확률을 구하기 위해 $x$와 $y_1$을 이용한다는 점에서 seq2seq은 conditional language model이다. 이를 수식으로 표현하면 아래와 같다. 
 
 $$P(y|x) = P(y_1|x)P(y_2|x,y_1)...P(y_T|x,y_1,...,y_{T-1})$$
 
