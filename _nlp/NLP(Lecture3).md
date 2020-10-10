@@ -35,7 +35,7 @@ Cross Entropy에 대해 설명하기에 앞서 Entropy의 개념을 살펴보자
 $H(q) = - \sum_{c=1}^{C}{q(c)*log  q(c)}$ 
 
 
-$H(q)$ 는 불확실성이 커질수록 큰 값을 갖는다. 예를들어 가방 안에 빨간 공과 파란 공이 있다고 하자. 이 때 두 공의 개수가 동일한 경우보다 빨간 공과 파란 공의 비율이 1:9 인 경우에 Entropy가 더 클 것이다. 공의 비율이 1:9인 경우는 파란공이 뽑힐 가능성이 높다는 확실성을 갖지만, 비율이 같으면 어떤 공이 나올지 모르기 때문이다. 수식에 넣어보면, $-(0.1*log(0.1)+0.9*log(0.9))=0.14 ,-(0.5*log(0.5)+0.5*log(0.5))=0.30 $ 으로 공의 개수가 동일한 경우 불확실도가 높은 것을 확인할 수 있다. Entropy를 기반으로 하여 나온 loss function이 Cross Entropy다. 수식의 형태는 아래와 같다. 
+$H(q)$ 는 불확실성이 커질수록 큰 값을 갖는다. 예를들어 가방 안에 빨간 공과 파란 공이 있다고 하자. 이 때 두 공의 개수가 동일한 경우가 빨간 공과 파란 공의 비율이 1:9 인 경우보다 Entropy가 더 클 것이다. 공의 비율이 1:9인 경우는 파란공이 뽑힐 가능성이 높다는 확실성을 갖지만, 비율이 같으면 어떤 공이 나올지 모르기 때문이다. 수식에 넣어보면, $-(0.1*log(0.1)+0.9*log(0.9))=0.14 ,-(0.5*log(0.5)+0.5*log(0.5))=0.30 $ 으로 공의 개수가 동일한 경우 불확실도가 높은 것을 확인할 수 있다. Entropy를 기반으로 하여 나온 loss function이 Cross Entropy다. 수식의 형태는 아래와 같다. 
 
 $H(p,q) = - \sum_{c=1}^{C}{p(c)*log  q(c)}$ 
 
@@ -99,7 +99,7 @@ Window classification의 경우 NER(Named Entity Recognition)을 예시로 들�
 
 ![NER](http://whdbfla6.github.io/assets/images/nlp3-9.JPG)
 
-여기에서 가운데 단어 paris가 location 인지 아닌지 확인하고 싶다고 하자. Corpus 내 모든 위치에서 학습시켜야 하며, 이는 negative sampling 적용하는 것과 같다. input은 True window와 Corrupt window 두 종류를 사용한다. True window는 *museums in paris are amazing* 과 같이 center 단어가 location인 경우이며, Corrupt window은 center 단어가 NER location으로 label되지 않은 경우로 *Not all museums in paris*가 해당 예다. input vector를 layer에 통과시키면 최종적인 s값이 나오게 되는데, loss function으로는 Min-margin loss를 사용한다.Min-margin loss는 $max(1+s_c-s)$로 이 값을 최소화하는 방식으로 훈련을 진행해야 한다. 핵심 아이디어는 true window의 score는 크게 corrupt window의 score는 낮게 나오도록 하는 것이다.($s$는 true window's score, $s_c$는 corrupt window's score) $s-s_c>0$인 경우 true window의 score가 더 크기 때문에 학습을 중단해도 되지만, $s_c-s>0$인 경우 학습이 진행되어야 한다. loss function에서 1은 margin으로 true window와 corrupt window의 구분을 명확하게 해준다.
+여기에서 가운데 단어 paris가 location 인지 아닌지 확인하고 싶다고 하자. Corpus 내 모든 위치에서 학습시켜야 하며, 이는 negative sampling 적용하는 것과 같다. input은 True window와 Corrupt window 두 종류를 사용한다. True window는 *museums in paris are amazing* 과 같이 center 단어가 location인 경우이며, Corrupt window은 center 단어가 NER location으로 label되지 않은 경우로 *Not all museums in paris*가 해당 예다. input vector를 layer에 통과시키면 최종적인 s값이 나오게 되는데, loss function으로는 Min-margin loss를 사용한다.Min-margin loss는 $max(1+s_c-s,0)$로 이 값을 최소화하는 방식으로 훈련을 진행해야 한다. 핵심 아이디어는 true window의 score는 크게 corrupt window의 score는 낮게 나오도록 하는 것이다.($s$는 true window's score, $s_c$는 corrupt window's score) $s-s_c>0$인 경우 true window의 score가 더 크기 때문에 학습을 중단해도 되지만, $s_c-s>0$인 경우 학습이 진행되어야 한다. loss function에서 1은 margin으로 true window와 corrupt window의 구분을 명확하게 해준다.
 
 
 
