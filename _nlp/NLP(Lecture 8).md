@@ -1,5 +1,3 @@
-# NLP(Lecture 8)
-
 --- 
 layout: single
 title: NLP(Lecture 8)
