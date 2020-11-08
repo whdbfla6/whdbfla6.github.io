@@ -1,5 +1,5 @@
 --- 
-title: [NLP]Lecture 8
+title: '[NLP]Lecture 8'
 usemathjax: true
 use_math: true
 comments: true

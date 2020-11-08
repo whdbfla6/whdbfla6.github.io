@@ -1,5 +1,5 @@
 --- 
-title: [CNN]RESNET
+title: '[CNN]RESNET'
 use_math: true
 comments: true
 categories:
