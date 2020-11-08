@@ -1,9 +1,11 @@
 --- 
 layout: single
-title: CNN(VGG_net)
+title: [CNN]VGG_net
 use_math: true
 comments: true
-
+categories:
+  - 딥러닝기초
+  - CNN
 ---
 
 
