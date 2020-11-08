@@ -1,5 +1,4 @@
 --- 
-layout: single
 title: [NLP]Lecture 8
 usemathjax: true
 use_math: true

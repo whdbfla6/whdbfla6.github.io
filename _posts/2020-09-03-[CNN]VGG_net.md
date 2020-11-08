@@ -1,5 +1,4 @@
 --- 
-layout: single
 title: [CNN]VGG_net
 use_math: true
 comments: true
