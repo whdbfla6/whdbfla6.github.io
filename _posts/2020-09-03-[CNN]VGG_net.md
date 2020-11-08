@@ -2,6 +2,8 @@
 title: '[CNN]VGGNET'
 use_math: true
 comments: true
+layout: single
+classes : wide
 categories:
   - 딥러닝기초
   - CNN
