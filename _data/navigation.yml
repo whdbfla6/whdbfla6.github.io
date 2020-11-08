@@ -6,8 +6,8 @@ main:
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
   #   url: /year-archive/
-  - title: "Collections"
-    url: /collection-archive/
+  #- title: "Collections"
+  #  url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
   - title: "Categories"
