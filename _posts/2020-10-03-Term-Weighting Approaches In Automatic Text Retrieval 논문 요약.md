@@ -8,6 +8,7 @@ categories:
   - Information retrieval
 
 ---
+본 글은 문성빈 교수님의 <정보검색론> 수업시간에 과제로 진행한 [Term-Weighting Approaches In Automatic Text Retrieval,Gerard Salton, Christopher Buckley](https://www.sciencedirect.com/science/article/abs/pii/0306457388900210) 논문을 요약한 내용입니다.
 
 ## 1. Automatic Text Analysis
 >Automatic text retrieval system
