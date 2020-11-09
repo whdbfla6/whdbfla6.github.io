@@ -92,7 +92,7 @@ $$normalized\ term\ weighting = \frac{w}{\sqrt{\sum_{vectori}{(w_i)^2}}}$$
 
 > typical term-weighting formulas 
 
-오른쪽 표는 유명한 term-weighting 시스템을 나타내고 있다. coordination level은 문서와 query에서 동시에 등장하는 단어의 수를 반영하는 방법이다. Binary term independence는 coordination level에서 더 나아가 query에서 확률적인 역문헌빈도를 가중치로 사용하고 있다. Best fully weighted system에서는 문서에 정규화된 $TF*IDF$를 query에는 정규화하지 않은 $TF*IDF$ 를 사용한다. 
+오른쪽 표는 유명한 term-weighting 시스템을 나타내고 있다. coordination level은 문서와 query에서 동시에 등장하는 단어의 수를 반영하는 방법이다. Binary term independence는 coordination level에서 더 나아가 query에서 확률적인 역문헌빈도를 가중치로 사용하고 있다. Best fully weighted system에서는 문서에 정규화된 TF IDF를 query에는 정규화하지 않은 TF IDF를 사용한다.  
 
 > 실험 대상 문헌
 
