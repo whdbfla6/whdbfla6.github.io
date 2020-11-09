@@ -13,13 +13,15 @@ categories:
 >Automatic text retrieval system
 
 자동 텍스트 검색 시스템은 저장된 텍스트와 이용자의 quary에 포함된 content identifier(내용 식별자)의 비교를 기반으로 구성된다. query와 document 간의 유사도가 높을 수록 해당 문서가 상단에 검색될 수 있도록 하는 것이다. *Content identifier*는 문서의 텍스트나 quary에서 추출해 사용한다. 문서나 쿼리는 다음과 같은 형태로 표현할 수 있다.
-$$D=(t_0,w_{d_0};t_1,w_{d_1};,...,;t_t,w_{d_t})$$ $$Q=(q_0,w_{q_0};q_1,w_{q_1};,...,;q_t,w_{q_t})$$ 여기서 $t,q$는 term vectors에 해당하고, $w_k$는 문서D에서 term $t_k$의 가중치를 나타낸다. 이제 query와 document의 유사도를 측정해야 하는데 이는 가중치($w$)로 이루어진 t차원 벡터의 내적으로 계산된다. $$D=\begin{bmatrix}
-w_{d_0}\\w_{d_1} \\ \vdots\\w_{d_t} 
-\end{bmatrix}\quad Q=\begin{bmatrix}
-w_{q_0}\\w_{q_1} \\ \vdots\\w_{q_t} 
-\end{bmatrix}\quad$$ $$similarity(Q,D)=\sum_{k=1}^t{w_{q_k}\cdot w_{d_k}}$$ 가중치는 해당 문서에 등장하는 경우 1 아닌 경우 0으로 binary한 값을 사용할 수도 있지만, 중요한 단어의 경우 1에 가깝고 중요하지 않은 단어는 0에 가깝도록 0과 1사이의 연속적인 값을 사용할 수도 있다. 상황에 따라 정규화한 weight를 사용하기도 하는데, 이는 가중치 값을 벡터의 크기로 나눠준 값이다. 정규화 과정을 통해 가중치가 0과 1사이의 값으로 반환된다. $$ D=\begin{bmatrix}
-w_{d_0}\\w_{d_1} \\ \vdots\\w_{d_t} 
-\end{bmatrix}\quad (noramlized\ weight) = \frac{w_{dk}}{\sqrt{\sum_{i=1}^t{(w_{d_i})^2}}}\cdots(a)$$ (a)수식을 기존의 유사도 공식에 대입을 하면 다음과 같다.$$similarity(Q,D)=\frac{\sum_{k=1}^t{w_{q_k}\cdot w_{d_k}}}{\sqrt{\sum_{k=1}^t{(w_{q_k})^2}\cdot\sum_{k=1}^t{(w_{d_k})^2}}}$$
+$$D=(t_0,w_{d_0};t_1,w_{d_1};,...,;t_t,w_{d_t})$$ 
+$$Q=(q_0,w_{q_0};q_1,w_{q_1};,...,;q_t,w_{q_t})$$ 
+여기서 $t,q$는 term vectors에 해당하고, $w_k$는 문서D에서 term $t_k$의 가중치를 나타낸다. 이제 query와 document의 유사도를 측정해야 하는데 이는 가중치($w$)로 이루어진 t차원 벡터의 내적으로 계산된다. 
+$$D=\begin{bmatrix}w_{d_0}\\w_{d_1} \\ \vdots\\w_{d_t}\end{bmatrix}\quad Q=\begin{bmatrix}w_{q_0}\\w_{q_1} \\ \vdots\\w_{q_t}\end{bmatrix}\quad$$ 
+$$similarity(Q,D)=\sum_{k=1}^t{w_{q_k}\cdot w_{d_k}}$$ 
+
+가중치는 해당 문서에 등장하는 경우 1 아닌 경우 0으로 binary한 값을 사용할 수도 있지만, 중요한 단어의 경우 1에 가깝고 중요하지 않은 단어는 0에 가깝도록 0과 1사이의 연속적인 값을 사용할 수도 있다. 상황에 따라 정규화한 weight를 사용하기도 하는데, 이는 가중치 값을 벡터의 크기로 나눠준 값이다. 정규화 과정을 통해 가중치가 0과 1사이의 값으로 반환된다. 
+$$ D=\begin{bmatrix}w_{d_0}\\w_{d_1} \\ \vdots\\w_{d_t} \end{bmatrix}\quad (noramlized\ weight) = \frac{w_{dk}}{\sqrt{\sum_{i=1}^t{(w_{d_i})^2}}}\cdots(a)$$ (a)수식을 기존의 유사도 공식에 대입을 하면 다음과 같다.
+$$similarity(Q,D)=\frac{\sum_{k=1}^t{w_{q_k}\cdot w_{d_k}}}{\sqrt{\sum_{k=1}^t{(w_{q_k})^2}\cdot\sum_{k=1}^t{(w_{d_k})^2}}}$$
 
 $t_1$: 바나나 $t_2$: 딸기 $t_3$: 원숭이 $t_4$: 사과  $t_5$: 좋다 $t_6$: 아침 <br/>
 
