@@ -12,10 +12,6 @@ categories:
 본 글은 스탠포드 [CS 224N](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/) [Word Window Classification, Neural Networks, and Matrix Calculus] 강의를 들으며 정리한 글 입니다.
 
 
-
-
-
-
 ## 1. Classification
 NLP에서 분류는 단어, 문자, 문서 등을 x값으로 받아 감정, named entities 등 y값을 예측하는데 사용된다. binary case인 경우에는 시그모이드 함수를 사용하며, class가 3개 이상인 경우에는 **소프트맥스** 함수를 이용해 y값을 예측한다
 
@@ -71,6 +67,7 @@ Neural network classifier는 nonlinear한 decision boundary를 구현하기 위�
 NLP에서는 파라미터(w)와 word vector(x)를 같이 학습시킨다는 점에서 일반 딥러닝 학습과 차이가 있다. 이 때 훈련데이터가 매우 적은 상황에서 pre-trained word vector를 임베딩 벡터로 사용하기도 한다. 훈련데이터가 적은 경우에는 해당 문제에 특화된 임베딩 벡터를 만드는게 쉽지 않다고 한다. 따라서 해당 문제에 특화된 것은 아니지만 일반적이고 많은 훈련데이터로 이미 학습된 임베딩 벡터를 사용하면 성능을 개선할 수 있다.
 
 ## 3. Window Classification
+
 Window classification의 경우 NER(Named Entity Recognition)을 예시로 들어 설명을 할 것이다. NER은 문장 안에서 Location, Person, Organization 등 개체명(Named Entity)를 분류하는 방법론이다.‘디카프리오가 나온 영화 틀어줘’라는 문장에서 ‘디카프리오’를 사람으로 인식하는 것을 목표로 한다. 하지만 NER의 경우,<br/>
 1. Entity 경계를 정하기 힘들다
 (First National Bank vs National Bank 어느것을 input data로 볼 것인가?) <br/>

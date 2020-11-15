@@ -12,7 +12,6 @@ categories:
 본 글은 문성빈 교수님의 <정보검색론> 수업시간에 과제로 진행한 [Term-Weighting Approaches In Automatic Text Retrieval,Gerard Salton, Christopher Buckley](https://www.sciencedirect.com/science/article/abs/pii/0306457388900210) 논문 요약 내용입니다.
 
 ## 1. Automatic Text Analysis
-
 >Automatic text retrieval system
 
 자동 텍스트 검색 시스템은 저장된 텍스트와 이용자의 quary에 포함된 content identifier(내용 식별자)의 비교를 기반으로 구성된다. query와 document 간의 유사도가 높을 수록 해당 문서가 상단에 검색될 수 있도록 하는 것이다. *Content identifier*는 문서의 텍스트나 quary에서 추출해 사용한다. 문서나 쿼리는 다음과 같은 형태로 표현할 수 있다.
@@ -70,7 +69,6 @@ automatic text retrieval system을 구축하는데 있어 크게 고려해야 �
 엄격한 기준으로 복잡한 text representation을 하는 경우에 사용 가능한 식별자는 많지 않고, 검색 성능이 single-term을 사용할 때와 큰 차이가 없어진다. 또한 완화된 기준을 적용해 많은 식별자를 얻을 수 있더라도 성능이 좋지 않다고 한다. 결과적으로 검색 식별자로 single-term이 선호되며, 각 용어를 구분하기 위해 가중치 factor를 사용하게 된다. 
 
 ## 2. Term-Weight Specification
-
 >Recall and Precision
 
 Term-weighting system의 가장 중요한 기능은 검색 성능을 높여준다는 것이다. 효과적인 검색 성능을 나타내는 두가지 척도는 재현율과 정확률이다. 
@@ -88,7 +86,6 @@ $$precision = \frac{검색된\ 적합문헌\ 수}{검색된\ 총\ 문헌\ 수}$$
 $$normalized\ term\ weighting = \frac{w}{\sqrt{\sum_{vectori}{(w_i)^2}}}$$
 
 ## 3. Term-Weighting Experiments
-
 ![](https://i.imgur.com/ZfZQ12x.png)
 
 >term-weighting components

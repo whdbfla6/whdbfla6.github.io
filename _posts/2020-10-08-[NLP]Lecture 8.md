@@ -157,6 +157,7 @@ $$a_t=\sum_{i=1}^{N}{\alpha^th_i}$$
 > ${\hat{y}}$ 구하기
 
 ![](https://i.imgur.com/FU1v8Fe.png)
+
 Attention output **$a^t$** 와 디코더 hidden state $s_t$를 연결해준다 $v_t=[a^t;s_t]$
 
 ![](https://i.imgur.com/pIbghqg.png)
