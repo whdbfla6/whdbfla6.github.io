@@ -12,7 +12,7 @@ categories:
 
 
 
-본 글은 문성빈 교수님의 <정보검색론>수업 때 과제로 진행한 [GETTING BEYOND BOOLE](https://www.sciencedirect.com/science/article/abs/pii/030645738890091X) 논문 요약 내용입니다
+본 글은 문성빈 교수님의 <정보검색론>수업 때 과제로 진행한 [GETTING BEYOND BOOLE] 논문 요약 내용입니다
 
 > 서론
 
@@ -54,3 +54,5 @@ facet들이 시스템에 입력이 된다면 이용자들에게 각각의 가중
 
 Robertson과 spack Jones에 의해 제안된 확률론적 검색 공식은 문헌 집단 안에서 index term들이 독립이라는 가정을 두고 있다. 하지만 확률론적 검색 시스템은 단어들이 서로 의존적이라는 가정 아래 더 좋은 성능을 보일 것이다.
 단어들 간의 의존성을 고려하기 위해 제안된 하나의 방법은 maximum entropy이다. 이는 독립성 가정을 제거하고 어떠한 확률론적 데이터나 제약을 이용 가능하게 해준다. 이 방법은 dependency problem을 해결해주기는 하지만 컴퓨팅적으로 실현 가능한지 명확하지는 않기 때문에 계속적으로 연구해나가야 하는 문제다. 
+
+[논문 원문 링크](https://www.sciencedirect.com/science/article/abs/pii/030645738890091X)
