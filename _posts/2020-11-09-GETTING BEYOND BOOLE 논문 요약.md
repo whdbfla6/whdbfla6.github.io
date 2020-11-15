@@ -9,6 +9,9 @@ categories:
 ---
 
 
+
+
+
 본 글은 문성빈 교수님의 <정보검색론>수업 때 과제로 진행한 [GETTING BEYOND BOOLE](https://www.sciencedirect.com/science/article/abs/pii/030645738890091X) 논문 요약 내용입니다
 
 > 서론
