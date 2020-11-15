@@ -9,7 +9,7 @@ categories:
 
 ---
 
-본 글은 문성빈 교수님의 <정보검색론> 수업시간에 과제로 진행한 [Term-Weighting Approaches In Automatic Text Retrieval,Gerard Salton, Christopher Buckley](https://www.sciencedirect.com/science/article/abs/pii/0306457388900210) 논문 요약 내용입니다.
+본 글은 문성빈 교수님의 <정보검색론> 수업시간에 과제로 진행한 [Term-Weighting Approaches In Automatic Text Retrieval,Gerard Salton, Christopher Buckley] 논문 요약 내용입니다.
 
 ## 1. Automatic Text Analysis
 
@@ -119,7 +119,7 @@ $$normalized\ term\ weighting = \frac{w}{\sqrt{\sum_{vectori}{(w_i)^2}}}$$
 - IDF: f와 p가 거의 동일한 성능을 보이나 일반적으로 f를 사용한다
 - 정규화: 벡터 길이의 편차가 큰 경우에 c를 사용하며 동일한 길이의 짧은 문헌의 경우 정규화를 하지 않아도 된다. 
 
-
+[논문 원문 링크](https://www.sciencedirect.com/science/article/abs/pii/0306457388900210)
 
 
 
