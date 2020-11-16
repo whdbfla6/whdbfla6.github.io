@@ -324,9 +324,4 @@ defaults:
       author_profile: false
       share: true
 
-# Math equation
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
+mathjax: true
