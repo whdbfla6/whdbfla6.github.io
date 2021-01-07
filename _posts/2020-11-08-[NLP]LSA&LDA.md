@@ -4,6 +4,7 @@ usemathjax: true
 use_math: true
 comments: true
 layout: single
+classes: wide
 categories:
   - NLP
 

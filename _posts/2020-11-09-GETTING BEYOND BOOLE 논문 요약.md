@@ -3,6 +3,7 @@ title: "[Information retrieval]GETTING BEYOND BOOLE 논문 요약"
 use_math: true
 comments: true
 layout: single
+classes: wide
 categories:
   - Information retrieval
 ---
