@@ -13,15 +13,13 @@ categories:
 
 ![RESNET](http://whdbfla6.github.io/assets/images/resnet1.JPG)
 
-이 그래프를 보면 56 layer의 네트워크가 20 layer로 구성된 네트워크보다 test error가 더 높은 것을 확인할 수 있다. 즉 depth가 깊어진다고 반드시 좋은 성능으로 이어지지 않는다는 말이다. 여기서 resnet 연구진들은 RESIDUAL BLOCK을 고안해 모델의 깊이는 깊어지면서 성능은 더욱 개선된 네트워크를 개발했다.
+이 그래프를 보면 56 layer의 네트워크가 20 layer로 구성된 네트워크보다 test error가 더 높은 것을 확인할 수 있다. 이는 depth가 깊어진다고 반드시 좋은 성능으로 이어지지 않는다는 것을 의미한다. 이는 네트워크의 깊이가 깊어지면 vanishing gradient의 문제가 발생하기 때문인데, resnet 연구진들은 **RESIDUAL BLOCK**을 고안해 모델의 깊이는 깊어지면서 성능은 개선된 네트워크를 개발했다.
 
 ## Residual Block
 
-우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이(각 픽셀 값) label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각으로 x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식이 아닌 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
+우리가 기존에 알고 있는 네트워크들은 x값을 label에 mapping하는 방식으로 구성되었다. 즉 input image가 숫자 3에 해당한다면, x값이 label3에 mapping하는 방식으로 말이다. 하지만 RESNET은 분류의 문제에 있어 y값은 x를 대변하는 것이라는 생각으로 **x값을 레이블이 아닌 픽셀의 값(x)에 mapping하는 방식**으로 변화를 주었다. 따라서 H(x)-y를 최소화 하는 방식이 아닌 H(x)-x를 최소화 하는 방식으로 학습을 진행한다.
 
 $H(x)-x$ 최소화, $H(x)=x$
-
-![RESNET](http://whdbfla6.github.io/assets/images/resnet2.JPG)
 
 하지만 H(x)-x를 최소화하는 방식은 망이 엄청 깊어지는 경우 gradient vanishing 문제가 발생한다. resnet처럼 152개의 층이 존재하면, backpropagation을 진행할 수록 미분 값이 작아져 앞에 위치한 layer의 영향력이 작아진다는 것이다. 이를 해결하기 위해서 학습을 시킨 후에 x값을 더해 $H(x)=F(x)+x$가 x가 되도록 학습을 진행한다. 즉 F(x)가 0에 가까워지도록 학습하는 것이다. 이렇게 되면 미분 값이 $F'(x)+1$로 1이 최소치로 보장되기 때문에 gradient vanishing 문제를 해결해준다.
 
@@ -31,7 +29,7 @@ $H(x)-x$ 최소화 $ = F(x)+x-x$ 최소화, 즉 $F(x)$를 0에 가깝게 해라
 
 ## ResNet 코드 구성
 
-이제부터 resnet50을 직접 코드로 작성해 볼 것이다. resnet50은 conv1x1과 conv3x3 연산이 포함된 여러개의 bottleneck으로 구성된다. 따라서 RESNET class를 정의하기 전에 conv3x3 conv1x1 bottleneck 함수를 정의할 것이다. Bottle neck 구조는 아래와 같다
+이제부터 resnet50을 직접 코드로 작성해 볼 것이다. resnet50은 conv1x1과 conv3x3 연산이 포함된 여러개의 **bottleneck**으로 구성된다. 따라서 RESNET class를 정의하기 전에 conv3x3 conv1x1 bottleneck 함수를 정의할 것이다. Bottle neck 구조는 아래와 같다
 
 ![RESNET](http://whdbfla6.github.io/assets/images/resnet4.JPG)
 
@@ -206,15 +204,15 @@ planes = 64
 
 >  Downsample
 
-앞서 downsample은 input과 output 차원이 다른 경우 identity 덧셈 연산을 수행하기 위해 차원을 맞춰주는 작업이라고 언급했다. downsample은 1) stride값이 1이 아니거나 2) self.inplanes != planes * block.expansion인 경우 수행한다.
+앞서 downsample은 input과 output 차원이 다른 경우 **identity 덧셈 연산을 수행하기 위해 차원을 맞춰주는 작업**이라고 언급했다. downsample은 1) stride값이 1이 아니거나 2) self.inplanes != planes * block.expansion인 경우 수행한다.
 
-조건 1. stride != 1
+**조건 1. stride != 1**
 
 
 output size를 구하는 공식 $((inputsize) + (padding*2) - (filtersize))  /  (Stride) + 1 $ 에 따르면 stride값이 1이 아닌 경우 output size가 input size와 달라진다(현재 kernel_size=3, padding=1)
 
 
-조건 2. self.inplanes != planes * block.expansion
+**조건 2. self.inplanes != planes * block.expansion**
 
 
 Bottleneck 함수를 살펴보면 `conv1x1(inplanes, planes)` `conv3x3(planes, planes, stride)` `conv1x1(planes, planes * self.expansion)` conv 연산을 3번 수행한다. in_channel은 첫번째 conv1x1의 inplanes 값이며, 연산을 3번 수행 후의 out_channel 값은  planes * self.expansion이다. 따라서 self.inplanes != planes * block.expansion인 경우 input output 차원이 달라질 것이다
