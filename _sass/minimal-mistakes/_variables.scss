@@ -118,9 +118,6 @@ $masthead-link-color: $primary-color !default;
 $masthead-link-color-hover: mix(#000, $primary-color, 25%) !default;
 $navicon-link-color-hover: mix(#fff, $primary-color, 75%) !default;
 
-.page__title{
-  color: $link-color;
-}
 
 /* syntax highlighting (base16) */
 $base00: #263238 !default;
