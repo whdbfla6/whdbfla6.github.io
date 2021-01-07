@@ -27,7 +27,7 @@ VGG NET이 3x3 사이즈 필터를 사용한 이유는 다음과 같다. 3x3필�
 
 구조는 VGGNET 모델을 직접 코드로 작성해보면서 설명하려고 한다
 
-![vgg](http://whdbfla6.github.io/assets/images/vgg3.PNG)
+![vgg](http://whdbfla6.github.io/assets/images/vgg.PNG)
 
 
 이는 VGG11 VGG13 VGG16 VGG19의 구조를 나타낸 표다. D는 conv layer를 13번, FC를 3번 통과하기 때문에 VGG16에 해당한다.  VGG NET은 모두 마지막에 FC 3번 softmax를 통과하며, 앞부분에서 conv layer를 몇 번 통과시키는지에 따라 구조가 달라진다. 아래의 코드는 conv의 수를 조정하기 위한 부분이다.
@@ -69,7 +69,7 @@ def make_layers(cfg, batch_norm=False):
     return nn.Sequential(*layers)
 ```
 
-`for v in cfg`에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
+```for v in cfg```에서 v는 크게 **숫자**와 **'M'**으로 구분할 수 있다.
 
 > v가 숫자인 경우
 
