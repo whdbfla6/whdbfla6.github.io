@@ -3,7 +3,6 @@ title: "[Information retrieval]Term-Weighting Approaches In Automatic Text Retri
 use_math: true
 comments: true
 layout: single
-classes : wide
 categories:
   - Information retrieval
 
