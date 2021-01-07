@@ -12,7 +12,7 @@ categories:
 
 ## VGGNET
 
-![vgg](http://whdbfla6.github.io/assets/images/vgg1.jpg)
+![vgg](http://whdbfla6.github.io/assets/images/vgg1.PNG)
 
 **VGG16**은 K. Simonyan and A. Zisserman에 의해 제안된 convolution neural network 중 하나다. 이 모델은 1000개의 class로 구분되는 1400만장의 이미지를 분류하는데 높은 정확성을 보였다. VGG NET의 큰 특징은 1) 기존의 모델에 비해 depth가 증가했다 2)모든 Convolution layer에서 kernel size가 3인 필터를 사용했다는 점이다.
 
@@ -27,7 +27,7 @@ VGG NET이 3x3 사이즈 필터를 사용한 이유는 다음과 같다. 3x3필�
 
 구조는 VGGNET 모델을 직접 코드로 작성해보면서 설명하려고 한다
 
-![vgg](http://whdbfla6.github.io/assets/images/vgg3.JPG)
+![vgg](http://whdbfla6.github.io/assets/images/vgg3.PNG)
 
 
 이는 VGG11 VGG13 VGG16 VGG19의 구조를 나타낸 표다. D는 conv layer를 13번, FC를 3번 통과하기 때문에 VGG16에 해당한다.  VGG NET은 모두 마지막에 FC 3번 softmax를 통과하며, 앞부분에서 conv layer를 몇 번 통과시키는지에 따라 구조가 달라진다. 아래의 코드는 conv의 수를 조정하기 위한 부분이다.
@@ -256,8 +256,6 @@ CNN
     )
 
 
-
-설명을 위해서 코드 순서를 뒤죽박죽 나열했는데, 정돈된 코드는 [링크](https://github.com/deeplearningzerotoall/PyTorch/blob/master/lab-10_5_1_Advance-cnn(VGG).ipynb)에 있다.
 
 참고문헌<br/>
 [Neurohive-VGG16](https://neurohive.io/en/popular-networks/vgg16/)<br/>
