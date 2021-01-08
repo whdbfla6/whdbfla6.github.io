@@ -7,6 +7,9 @@ layout: single
 classes: wide
 categories:
   - NLP
+tags:
+  - NLP
+  - CS224N
 
 ---
 

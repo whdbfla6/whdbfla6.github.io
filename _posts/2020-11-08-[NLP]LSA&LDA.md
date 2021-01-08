@@ -7,6 +7,8 @@ layout: single
 classes: wide
 categories:
   - NLP
+tags:
+  - NLP
 
 ---
 

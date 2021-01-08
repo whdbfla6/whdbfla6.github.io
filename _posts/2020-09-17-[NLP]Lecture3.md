@@ -6,13 +6,16 @@ layout: single
 classes: wide
 categories:
   -  NLP
-
+tags:
+  - NLP
+  - CS224N
 ---
 
-본 글은 스탠포드 [CS 224N](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/) [Word Window Classification, Neural Networks, and Matrix Calculus] 강의를 들으며 정리한 글 입니다.
+본 글은 스탠포드 [CS224N](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/) [Word Window Classification, Neural Networks, and Matrix Calculus] 강의를 들으며 정리한 글 입니다.
 
 
 ## 1. Classification
+
 NLP에서 분류는 단어, 문자, 문서 등을 x값으로 받아 감정, named entities 등 y값을 예측하는데 사용된다. binary case인 경우에는 시그모이드 함수를 사용하며, class가 3개 이상인 경우에는 **소프트맥스** 함수를 이용해 y값을 예측한다
 
 > Softmax
