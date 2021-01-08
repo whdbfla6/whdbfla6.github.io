@@ -46,7 +46,9 @@ $$= argmax_yP(x|y)P(y)$$
 > $ P(x\mid y)$: Translation model
 
 쌍으로 구성된 데이터로부터 source language와 target language의 번역 모델을 만드는 부분으로, $P(x,a\mid y)$ 을 고려한다. 여기서 a는 *alignment*로 **source langauge 단어들과 target 단어들의 상응하는 관계**를 의미한다.
+
 ![](https://i.imgur.com/AVR7pBn.png)
+
 Alignment는 하나의 프랑스어가 여러개의 영어 단어로 표현되는 one-to-many관계 외에도, many-to-one/ many-to-many/ no counterpart 등 다양한 관계를 갖는다. 번역모델은 단어 간의 상응하는 관계, 문장에서의 위치, 하나의 단어가 몇개의 단어로 표현되는가 등 여러가지 요소를 고려한다. 
 
 - 단점
