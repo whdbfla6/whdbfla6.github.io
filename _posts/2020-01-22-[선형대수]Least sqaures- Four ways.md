@@ -27,7 +27,7 @@ $Ax=b$의 exact solution이 없는 경우에 근사해 $\widehat{\boldsymbol{x}}
 - Pseudo inverse는 $AA^{+} \sim I$를 만족하는 행렬. 즉 역행렬이 존재하지 않을 때의 근사 행렬
 - $A$가 mxn 사이즈 인 경우에 $A^{+}$는 nxm사이즈다
 
-![](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img6.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img6.PNG)
 
 - 행렬 A에 row space vector x를 곱하는 경우 Ax는 column space에 있다. 
 - 즉 x가 row space에 있는 경우 $A^{+}Ax=x$ b가 column space에 있는 경우  $A^{+}Ab=b$
@@ -60,7 +60,7 @@ A가 full rank로 단일 해 $x^{+}$가 존재한다고 하자. nullspace에 있
 
 > Ax=b 해가 존재하지 않는 경우
 
-![img3](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img3.PNG)
+![img3](http://whdbfla6.github.io/assets/linear-algebra/img3.PNG)
 
 - $Ax$는 행렬 $A$ column vector의 선형결합이다. 따라서 b가 A의 column space에 존재하지 않는 경우 해가 없다
 - 벡터 b를 A column space에 가장 가까운 벡터로 바꾼 후에 근사해 $\widehat{x}$를 구하자
