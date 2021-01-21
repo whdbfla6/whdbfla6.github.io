@@ -7,6 +7,9 @@ classes: wide
 categories:
   - 딥러닝기초
   - 선형대수
+tags:
+  - 딥러닝기초
+  - 선형대수
 ---
 
 
@@ -36,7 +39,7 @@ $$
 A=U\boldsymbol{\Sigma} V^T \ A^{+}=V\boldsymbol{\Sigma}^{+}  U^T
 $$
 
-![img5](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img5.PNG)
+![img5](http://whdbfla6.github.io/assets/linear-algebra/img5.PNG)
 
 - A의 역행렬이 존재하는 경우 $A^{-1}=V\boldsymbol{\Sigma}^{-1}  U^T$
 - A의 역행렬이 없는 경우 일부 특이값은 0 
@@ -45,13 +48,13 @@ $$
 Ax=b,\  x^+=A^{+}b
 $$
 
-![img7](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img7.PNG)
+![img7](http://whdbfla6.github.io/assets/linear-algebra/img7.PNG)
 
 $x^{+}=A^{+}b$는 least square solution이며, least square solution을 만족하는 해들 중에서 norm이 가장 작다
 
 A가 full rank로 단일 해 $x^{+}$가 존재한다고 하자. nullspace에 있는 벡터 x는 아무런 영향이 없기 때문에 $x^{+} +x$ 또한 해가 된다. $x^{+}$는 rowspace vector, $x$는 nullspace vector이기 때문에 $\parallel x^{+} + x \parallel = \parallel x^{+} \parallel + \parallel x \parallel$ 를 만족한다.  여기서 $x^{+}$을 해로 고를 때 norm이 가장 작아지는 것을 확인할 수 있다.
 
-![img8](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img8.PNG)
+![img8](http://whdbfla6.github.io/assets/linear-algebra/img8.PNG)
 
 ### 방법2 : Projection 
 
@@ -129,7 +132,7 @@ $$
 
 > QR분해
 
-![](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img9.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img9.PNG)
 
 - Q는 orthonormal basis로 구성된 행렬
 - $R = Q^TA$ $r_ij = q_i^Ta_j$로 상삼각행렬이다
@@ -139,7 +142,7 @@ $$
 - 그람슈미트에서 $a_1,\ a_2  \cdot , a_n$ 순서 그대로 직교벡터를 만드는 것은 위험하다(행렬 elimination 과정에서 row exchange를 안 하는 것과 유사한 이유)
 - 매 스탭마다 열 교환을 통해 가장 큰 길이의 벡터를 선택해야 한다
 
-![](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img10.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img10.PNG)
 
 - good column comes first!
 
@@ -148,7 +151,7 @@ $$
 - A 행렬의 열이 dependent한 경우 nullspace가 nontrivial하며 $A^TA$ 또한 역행렬이 존재하지 않는다. 즉 방법2와 방법3을 사용할 수 없다
 - 이 때 제안된 방법이 ridge regression!
 
-![](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img11.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img11.PNG)
 
 - penalty $\delta$가 0인 경우 pseudo inverse로 계산하는 것과 동일
 
@@ -160,7 +163,7 @@ $$
 - 결과가  $\boldsymbol{\Sigma}$를 구하는 과정과 동일
 - penalty term은 singular 값에 0이 존재해 역행렬이 없거나, near singular case인 경우 적용하는 것이 좋다. 여기서 특이값이 0에 가까운 아주 작은 값일 경우 near singular case라 하고 역행렬이 지나치게 커지는 문제를 초래한다. 이는 분모에 penalty term $\delta$를 부여해 해결이 가능하다
 
-![img12](C:\Users\SAMSUNG\Documents\2021 겨울방학\선형대수\img12.PNG)
+![img12](http://whdbfla6.github.io/assets/linear-algebra/img12.PNG)
 
 > Ridge vs Lasso
 
