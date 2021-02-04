@@ -28,15 +28,13 @@ tags:
 
 > 2차원 벡터 투영
 
-![](C:\Users\SAMSUNG\whdbfla6.github.io\assets\linear-algebra\img15.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img15.PNG)
 
 - error vector와 $p$의 orthogonal한 관계를 이용해 $p$를 구하자
 
 $$
 a^T\cdot (b-xa)=0 \\ x=\frac{a^Tb}{a^Ta}\\ p=ax=a\frac{a^Tb}{a^Ta}=\frac{aa^T}{a^Ta}b
 $$
-
-
 
 > n차원 벡터 투영
 

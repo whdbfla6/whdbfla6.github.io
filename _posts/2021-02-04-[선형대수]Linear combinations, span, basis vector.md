@@ -5,13 +5,9 @@ comments: true
 layout: single
 classes: wide
 categories:
-
   - 선형대수
-
-  tags:
-
+tags:
   - 선형대수
-
 ---
 
 ## 1. 벡터에 대한 이해
