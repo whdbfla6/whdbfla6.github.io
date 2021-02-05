@@ -115,22 +115,16 @@ $$
 $\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자  $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미한다. 
 
 예를들어 $\begin{bmatrix} 1 \\ 3\end{bmatrix}$ 벡터를 standard basis $\begin{bmatrix}1 \\ 0 \end{bmatrix}, \begin{bmatrix}0 \\ 1\end{bmatrix}$ 로 나타내보자. 
-$$
-x =\begin{bmatrix} 1 \\ 3\end{bmatrix} = 1 \begin{bmatrix}1 \\ 0 \end{bmatrix}+ 3 \begin{bmatrix}0 \\ 1\end{bmatrix}
-$$
 
-$$
-\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}} = \begin{bmatrix}1 \\ 3 \end{bmatrix}
-$$
+$$x =\begin{bmatrix} 1 \\ 3\end{bmatrix} = 1 \begin{bmatrix}1 \\ 0 \end{bmatrix}+ 3 \begin{bmatrix}0 \\ 1\end{bmatrix}$$
+
+$$\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}} = \begin{bmatrix}1 \\ 3 \end{bmatrix}$$
 
 이번에는 standard basis가 아닌   $\begin{bmatrix}1 \\ -1 \end{bmatrix}, \begin{bmatrix}0 \\ 4\end{bmatrix}$  basis를 이용해 $\begin{bmatrix} 1 \\ 3\end{bmatrix}$을 표현해 보자
-$$
-\begin{bmatrix} 1 \\ 3\end{bmatrix} = 1 \begin{bmatrix}1 \\ -1 \end{bmatrix}+ 1 \begin{bmatrix}0 \\ 3\end{bmatrix}
-$$
 
-$$
-\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}} = \begin{bmatrix}1 \\ 1 \end{bmatrix}
-$$
+$$\begin{bmatrix} 1 \\ 3\end{bmatrix} = 1 \begin{bmatrix}1 \\ -1 \end{bmatrix}+ 1 \begin{bmatrix}0 \\ 3\end{bmatrix}$$
+
+$$\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}} = \begin{bmatrix}1 \\ 1 \end{bmatrix}$$
 
 모든 벡터는 벡터공간의 basis로 표현할 수 있기 때문에 basis를 안다는 것은 벡터 공간 전체를 이해한 것과 같다고 볼 수 있다. 또한 동일한 벡터를 어떤 basis를 기준으로 잡는지에 따라 다른 좌표로 표현할 수 있다. 기저의 변환에 대한 이해는 향후 행렬의 대각화나 SVD 분해를 이해하는데 밑거름이 될 것이다.
 
