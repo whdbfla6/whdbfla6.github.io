@@ -112,7 +112,7 @@ $$
 $$
 우리가 보편적으로 $(1,3)$이라 할 때 각 1과 3은 standard basis로 표현한 좌표를 의미한 것이었다. 
 
-![]((http://whdbfla6.github.io/assets/linear-algebra/img16.png)
+![img](http://whdbfla6.github.io/assets/linear-algebra/img16.png)
 
 여기서 **좌표**를 수식 기호로 표현하면 아래와 같다. 
 
