@@ -28,7 +28,7 @@ tags:
 
 > 2차원 벡터 투영
 
-![](http://whdbfla6.github.io/assets/linear-algebra/img15.PNG)
+![](http://whdbfla6.github.io/assets/linear-algebra/img17.png)
 
 - error vector와 $p$의 orthogonal한 관계를 이용해 $p$를 구하자
 
