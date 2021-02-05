@@ -112,7 +112,7 @@ $$
 $$
 우리가 보편적으로 $(1,3)$이라 할 때 각 1과 3은 standard basis로 표현한 좌표를 의미한 것이었다. 여기서 **좌표**를 수식 기호로 표현하면 아래와 같다. 
 
-$\mathcal{X}= \left\{ x_1,x_2 \right\ }$ 가 $R^2$공간의 basis라고 하자  $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미한다. 
+$\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자  $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미한다. 
 
 예를들어 $\begin{bmatrix} 1 \\ 3\end{bmatrix}$ 벡터를 standard basis $\begin{bmatrix}1 \\ 0 \end{bmatrix}, \begin{bmatrix}0 \\ 1\end{bmatrix}$ 로 나타내보자. 
 $$
