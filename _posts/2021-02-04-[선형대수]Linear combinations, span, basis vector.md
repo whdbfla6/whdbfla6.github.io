@@ -110,7 +110,11 @@ Vector space의 **basis**는 그 공간을 span하는 선형독립인 벡터들�
 $$
 \begin{bmatrix} x_1 \\ x_2\end{bmatrix} = x_1 \begin{bmatrix}1 \\ 0 \end{bmatrix}+ x_2 \begin{bmatrix}0 \\ 1\end{bmatrix}
 $$
-우리가 보편적으로 $(1,3)$이라 할 때 각 1과 3은 standard basis로 표현한 좌표를 의미한 것이었다. 여기서 **좌표**를 수식 기호로 표현하면 아래와 같다. 
+우리가 보편적으로 $(1,3)$이라 할 때 각 1과 3은 standard basis로 표현한 좌표를 의미한 것이었다. 
+
+![](http://whdbfla6.github.io/assets/linear-algebra/img16.PNG)
+
+여기서 **좌표**를 수식 기호로 표현하면 아래와 같다. 
 
 $\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자  $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미한다. 
 
@@ -126,5 +130,5 @@ $$\begin{bmatrix} 1 \\ 3\end{bmatrix} = 1 \begin{bmatrix}1 \\ -1 \end{bmatrix}+ 
 
 $$\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}} = \begin{bmatrix}1 \\ 1 \end{bmatrix}$$
 
-모든 벡터는 벡터공간의 basis로 표현할 수 있기 때문에 basis를 안다는 것은 벡터 공간 전체를 이해한 것과 같다고 볼 수 있다. 또한 동일한 벡터를 어떤 basis를 기준으로 잡는지에 따라 다른 좌표로 표현할 수 있다. 기저의 변환에 대한 이해는 향후 행렬의 대각화나 SVD 분해를 이해하는데 밑거름이 될 것이다.
+이처럼 동일한 벡터는 어떤 basis를 기준으로 잡는지에 따라 다른 좌표로 표현할 수 있다. 또한 모든 벡터는 벡터공간의 basis로 표현할 수 있기 때문에 basis를 안다는 것은 벡터 공간 전체를 이해한 것과 같다고 볼 수 있다. 기저의 변환에 대한 이해는 향후 행렬의 대각화나 SVD 분해를 이해하는데 밑거름이 될 것이다.
 
