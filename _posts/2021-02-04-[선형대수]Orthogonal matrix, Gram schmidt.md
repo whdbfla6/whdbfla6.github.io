@@ -6,7 +6,7 @@ layout: single
 classes: wide
 categories:
   - 선형대수
-    tags:
+tags:
   - 선형대수
 ---
 
