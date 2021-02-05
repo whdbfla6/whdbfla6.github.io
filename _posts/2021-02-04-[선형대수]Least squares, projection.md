@@ -43,7 +43,12 @@ A=\left[\begin{array}{ll}
 \mid & \mid \\
 \boldsymbol{a}_{1} & \boldsymbol{a}_{2} \\
 \mid & \mid
-\end{array}\right] \ A\widehat{x}=p\ 라하자\\\\ a_1^T(b-A\widehat{x})=0, a_2^T(b-A\widehat{x})=0\\\\
+\end{array}\right] \ A\widehat{x}=p\ 라하자
+$$
+
+$b-p=b-A\hat x$는 A행렬 각각의 column과 수직 관계에 있기 때문에 내적 값이 0이어야 한다.
+$$
+a_1^T(b-A\widehat{x})=0, a_2^T(b-A\widehat{x})=0\\\\
 \left[\begin{array}{c}
 \boldsymbol{a}_{1}^{T} \\
 \boldsymbol{a}_{2}^{T}
@@ -52,6 +57,7 @@ A=\left[\begin{array}{ll}
 0
 \end{array}\right]\\\\ A^{T}(\boldsymbol{b}-A \hat{x})=0,\ \hat{x}=(A^TA)^{-1}Ab
 $$
+
 
 > 투영행렬이란?(=P) 
 
