@@ -15,6 +15,8 @@ tags:
 > Orthonormal vector: 정규직교벡터
 
 정규직교벡터는 두 벡터가 수직인 관계에 있으면서 크기가 1인 벡터다
+
+
 $$
 \boldsymbol{q}_{i}^{T} \boldsymbol{q}_{j}=\left\{\begin{array}{lll}
 0 & \text { if } & i \neq j \\
@@ -25,6 +27,8 @@ $$
 > orthogonal matrix: 직교행렬
 
 행과 열이 orthonormal vector로 이루어진 행렬이다
+
+
 $$
 Q=\left[\begin{array}{ccc}
 \mid & & \mid \\
@@ -32,22 +36,16 @@ Q=\left[\begin{array}{ccc}
 \mid & & \mid
 \end{array}\right]
 $$
+
+
 직교행렬은 $Q^TQ$가 항등행렬이 된다는 성질이 있다
+
+
 $$
-Q^{T} Q=I \rightarrow\left[\begin{array}{ccc}
-- & \boldsymbol{q}_{1}^{T} & - \\
-& \vdots & \\
-- & \boldsymbol{q}_{n}^{T} & -
-\end{array}\right]\left[\begin{array}{ll}
-\mid & & \mid \\
-\boldsymbol{q}_{1} & \cdots & \boldsymbol{q}_{n} \\
-\mid & & \mid
-\end{array}\right]=\left[\begin{array}{ccc}
-1 & \cdots & 0 \\
-\vdots & \ddots & \vdots \\
-0 & \cdots & 1
-\end{array}\right]
+Q^{T} Q=I \rightarrow\left[\begin{array}{ccc}- & \boldsymbol{q}_{1}^{T} & - \\& \vdots & \\ - & \boldsymbol{q}_{n}^{T} & -\end{array}\right]\left[\begin{array}{ll}\mid & & \mid \\ \boldsymbol{q}_{1} & \cdots & \boldsymbol{q}_{n} \\ \mid & & \mid \end{array}\right]=\left[\begin{array}{ccc} 1 & \cdots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \cdots & 1 \end{array}\right]
 $$
+
+
 직교 행렬이 행과 열의 수가 같은 경우에 $Q^T=Q^{-1}$이 된다. 즉 행과 열의 위치를 바꿔서 쉽게 역행렬을 구할 수 있다
 
 - 직교 행렬의 이점
@@ -63,15 +61,21 @@ $$
 $R^n$ 의 subspace $w$ basis가 {$a_1, \cdots , a_n$}라 하자
 
 기존 $a_1$ 벡터를 $a_1$의 norm으로 나눠서 크기를 1로 바꿔준다. $A_2$는 기존 $a_2$벡터를 $a_1$에 수직인 벡터로 변환한 것으로, 직교하는 벡터의 내적이 0이라는 사실을 이용해 구해준다. 그 후에 $A_2$를 $A_2$ norm으로 나눠서 $q_2$를 구해준다. $A_3$벡터는 $a_3$벡터를  $a_1$과$a_2$에 모두 수직인 벡터로 바꿔준 것이다. 이 과정을 반복하다보면 orthonormal basis {$q_1, \cdots , q_n$} 를 얻을 수 있다
+
+
 $$
 q_1 = a_1/ \parallel a_1 \parallel\\ 
 A_2 = a_2 -(a_2^Tq_1)q_1,\ q_2 = A_2/ \parallel A_2 \parallel\\ 
 A_3 = a_3 -(a_3^Tq_1)q_1 -(a_3^Tq_2)q_2,\ q_3 = A_3/ \parallel A_3 \parallel\\
 $$
 
+
+
 ## 3. QR 분해
 
 그람슈미트 과정을 통해 구한 $q$벡터를 이용해 다음과 같이 $QR$분해가 가능하다
+
+
 $$
 A = \left[\begin{array}{lll}
 a_{1} & a_{2} & a_{3}
@@ -83,7 +87,11 @@ r_{11} & r_{12} & r_{13} \\
 0 & 0 & r_{33}
 \end{array}\right] = QR
 $$
+
+
 $R = Q^TA$ 은 상삼각행렬로 대각성분 아래의 성분은 모두 0이다. $R$행렬을 구하는 과정은 다음과 같다. 
+
+
 $$
 \left[\begin{array}{ccc}
 \mid & \mid & \mid \\
