@@ -83,6 +83,33 @@ $$
 
 벡터 $$v=\begin{bmatrix}1 \\ 2\end{bmatrix}$$  을 90도 시계 반대 방향으로 회전한다고 하면 $$Av=\begin{bmatrix}0 & -1  \\ 1 & 0  \end{bmatrix} \begin{bmatrix}1 \\ 2\end{bmatrix} = \begin{bmatrix}-2 \\ 1\end{bmatrix}$$​ 로 변환될 것이다. 
 
+> 기저의 변환
+
+선형 변환을 **기저의 변환** 측면에서 살펴보자. 
+
+$\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자
+
+- $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미 
+-  $T:X\rightarrow U$인 경우에 $\begin{bmatrix} T\end{bmatrix}_{\mathcal{X},U}$ 는 $A\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}=\begin{bmatrix} T(x)\end{bmatrix}_{U}$ 를 만족하는 행렬 $A$를 나타낸다. 
+
+
+$$
+\mathcal{S}= \begin{Bmatrix} e_1, & e_2 \end{Bmatrix}\\ v=\begin{bmatrix}1 \\ 2 \end{bmatrix} = 1\begin{bmatrix}1 \\ 0 \end{bmatrix}+2\begin{bmatrix}0 \\ 1 \end{bmatrix}=\begin{bmatrix} x\end{bmatrix}_{\mathcal{S}}\\T=\begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix} 
+$$
+
+
+위의 조건에서 행렬 T가 $\begin{bmatrix} T\end{bmatrix}_{\mathcal{S},\mathcal{S}}$임을 확인해보자
+
+
+$$
+\begin{bmatrix} T(x)\end{bmatrix}_{S} =\begin{bmatrix} T(1\cdot e_1+2\cdot e_2)\end{bmatrix}_{S} =\begin{bmatrix} T(e_1)+2T(e_2)\end{bmatrix}_{S} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix}1 \\ 2 \end{bmatrix} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix} x\end{bmatrix}_{\mathcal{S}}\\  \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix} = \begin{bmatrix} T\end{bmatrix}_{\mathcal{S},\mathcal{S}}
+$$
+
+
+즉 $$\begin{bmatrix} T(x)\end{bmatrix}_{S} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix}1 \\ 2 \end{bmatrix} = \begin{bmatrix}5 \\ 2 \end{bmatrix}$$ 는 선형변환 후에 표준기저로 나타낸 좌표를 의미한다. 
+
+
+
 ## 3. determinant(행렬식)
 
 앞서 2X2 행렬의 곱은 $R^2$공간에 놓인 모든 벡터들을 다른 벡터로 변환하는 **공간의 이동**이라고 했다. 이 때 **공간이 얼마나 확장했는지**를 나타낸 것이 **행렬식**이다
