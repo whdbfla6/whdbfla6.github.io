@@ -41,20 +41,20 @@ A = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\\ Ax = \begin{bmatrix}3 & 1  \
 $$
 
 
-조금 더 자세히 살펴보자.  행렬 $A$에 $$\begin{bmatrix}1 \\ 1 \end{bmatrix}$$ 를 곱하면 $$\begin{bmatrix}4\\ 2\end{bmatrix}$$$가 된다.  $$$\begin{bmatrix}1 \\ 1 \end{bmatrix}$$ 이 아닌 임의의 벡터 $$\begin{bmatrix}x \\ y \end{bmatrix}$$ 에 $A$를 곱한다면 각 벡터에 상응하는 출력벡터를 얻을 수 있을 것이다. 즉 2X2 행렬의 곱은 $R^2$공간에 놓인 모든 벡터들을 다른 벡터로 변환하는 **공간의 이동**으로 이해할 수 있다. 
+조금 더 자세히 살펴보자.  행렬 $A$에 $$\begin{bmatrix}1 \\ 1 \end{bmatrix}$$ 를 곱하면 $$\begin{bmatrix}4\\ 2\end{bmatrix}$$​가 된다. $$\begin{bmatrix}1 \\ 1 \end{bmatrix}$$ 이 아닌 임의의 벡터 $$\begin{bmatrix}x \\ y \end{bmatrix}$$ 에 $A$를 곱한다면 각 벡터에 상응하는 출력벡터를 얻을 수 있을 것이다. 즉 2X2 행렬의 곱은 $R^2$공간에 놓인 모든 벡터들을 다른 벡터로 변환하는 **공간의 이동**으로 이해할 수 있다. 
 
 ![img](http://whdbfla6.github.io/assets/linear-algebra/img19.png)
 
 [그림출처](https://shad.io/MatVis/)
 
-벡터 $$v=\begin{bmatrix}1 \\ 2 \end{bmatrix}$$는 기저를 $$\begin{bmatrix}1 \\ 0 \end{bmatrix},\begin{bmatrix}0 \\ 1 \end{bmatrix}$$ 로 바라볼 때 각각의 좌표를 의미하기 때문에 $$v=1i+2j$$로 나타낼 수 있다. 따라서 각 기저벡터가 다른 벡터로 이동한다면 벡터 $v$는 $-1(변환된 i)+2(변환된 j)$로 이동할 것이다.  
+벡터 $$v=\begin{bmatrix}1 \\ 2 \end{bmatrix}$$는 기저를 $$\begin{bmatrix}1 \\ 0 \end{bmatrix},\begin{bmatrix}0 \\ 1 \end{bmatrix}$$ 로 바라볼 때 각각의 좌표를 의미하기 때문에 $$v=1i+2j$$로 나타낼 수 있다. 따라서 각 기저벡터가 다른 벡터로 이동한다면 벡터 $v$는 $-1(transformed\ i)+2(transformed\ j)$로 이동할 것이다.  
 
 - $i,j$가 각각 $$\begin{bmatrix}3 \\ 0 \end{bmatrix}, \begin{bmatrix}1 \\ 2 \end{bmatrix}$$로 이동했다고 가정해보자
 
 
 $$
-(변환후)v=-1(변환된 i)+2(변환된 j)\\
-(변환후)v=-1\begin{bmatrix}3 \\ 0 \end{bmatrix}+2\begin{bmatrix}1 \\ 2 \end{bmatrix}
+(transformed)v=-1(transformed\ i)+2(transformed\ j)\\
+(transformed)v=-1\begin{bmatrix}3 \\ 0 \end{bmatrix}+2\begin{bmatrix}1 \\ 2 \end{bmatrix}
 $$
 
 
