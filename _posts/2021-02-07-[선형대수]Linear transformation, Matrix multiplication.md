@@ -1,5 +1,4 @@
-------
-
+---
 title: '[선형대수]Linear transformation, Matrix, determinant'
 use_math: true
 comments: true
@@ -9,10 +8,9 @@ categories:
 
   - 선형대수
 
-  tags:
+tags:
 
   - 선형대수
-
 ---
 
 ## 1. Linear transformation(선형변환)
