@@ -55,7 +55,7 @@ a_1^T(b-A\widehat{x})=0, a_2^T(b-A\widehat{x})=0\\\\
 \end{array}\right](\boldsymbol{b}-A \hat{x})=\left[\begin{array}{l}
 0 \\
 0
-\end{array}\right]\\\\ A^{T}(\boldsymbol{b}-A \hat{x})=0,\ \hat{x}=(A^TA)^{-1}Ab
+\end{array}\right]\\\\ A^{T}(\boldsymbol{b}-A \hat{x})=0,\ \hat{x}=(A^TA)^{-1}A^Tb
 $$
 
 
@@ -64,7 +64,7 @@ $$
 - 정사영 벡터를 구하기 위한 일반화된 matrix로 임의의 벡터에 적용 가능하다
 
 $$
-P=A(A^TA)^{-1}A
+P=A(A^TA)^{-1}A^T
 $$
 
 - $Pb=p$ 투영행렬의 column space는 a가 지나가는 선. 즉 b에 투영행렬을 곱해서 a가 지나가는 선에 안착시키는 것

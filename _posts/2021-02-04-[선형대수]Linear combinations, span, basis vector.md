@@ -24,7 +24,7 @@ $$
 $$
 
 
-수학자들의 관점에서는 덧셈과 상수 곱이 보존되는 경우에 벡터라 한다. $V$가 nonempty set이고 $R$을 실수 공간인 경우 다음 두가지 조건을 만족하는 경우에 V를 **vector space**라 한다
+수학자들의 관점에서는 **벡터공간의 원소**를 벡터라 한다. $V$가 nonempty set이고 $R$을 실수 공간인 경우 다음 두가지 조건을 만족하는 경우에 V를 **vector space**라 한다
 
 - $u,v\in V \Rightarrow u+v\in V$
 - $a\in R, v\in V \Rightarrow av\in V$
