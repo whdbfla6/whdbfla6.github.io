@@ -93,17 +93,21 @@ $\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis
 -  $T:X\rightarrow U$인 경우에 $\begin{bmatrix} T\end{bmatrix}_{\mathcal{X},U}$ 는 $A\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}=\begin{bmatrix} T(x)\end{bmatrix}_{U}$ 를 만족하는 행렬 $A$를 나타낸다. 
 
 
+
 $$
-\mathcal{S}= \begin{Bmatrix} e_1, & e_2 \end{Bmatrix}\\ v=\begin{bmatrix}1 \\ 2 \end{bmatrix} = 1\begin{bmatrix}1 \\ 0 \end{bmatrix}+2\begin{bmatrix}0 \\ 1 \end{bmatrix}=\begin{bmatrix} x\end{bmatrix}_{\mathcal{S}}\\T=\begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix} 
+\mathcal{S}= \begin{Bmatrix} e_1, & e_2 \end{Bmatrix}\\ v=\begin{bmatrix}1 \\ 2 \end{bmatrix} = 1\begin{bmatrix}1 \\ 0 \end{bmatrix}+2\begin{bmatrix}0 \\ 1 \end{bmatrix}=\begin{bmatrix} x\end{bmatrix}_{\mathcal{S}}\\T=\begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}
 $$
+
 
 
 위의 조건에서 행렬 T가 $\begin{bmatrix} T\end{bmatrix}_{\mathcal{S},\mathcal{S}}$임을 확인해보자
 
 
+
 $$
 \begin{bmatrix} T(x)\end{bmatrix}_{S} =\begin{bmatrix} T(1\cdot e_1+2\cdot e_2)\end{bmatrix}_{S} =\begin{bmatrix} T(e_1)+2T(e_2)\end{bmatrix}_{S} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix}1 \\ 2 \end{bmatrix} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix} x\end{bmatrix}_{\mathcal{S}}\\  \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix} = \begin{bmatrix} T\end{bmatrix}_{\mathcal{S},\mathcal{S}}
 $$
+
 
 
 즉 $$\begin{bmatrix} T(x)\end{bmatrix}_{S} = \begin{bmatrix}3 & 1  \\ 0 & 2  \end{bmatrix}\begin{bmatrix}1 \\ 2 \end{bmatrix} = \begin{bmatrix}5 \\ 2 \end{bmatrix}$$ 는 선형변환 후에 표준기저로 나타낸 좌표를 의미한다. 
