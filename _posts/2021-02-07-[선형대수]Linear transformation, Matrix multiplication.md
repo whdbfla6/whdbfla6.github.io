@@ -66,8 +66,6 @@ $$-1\begin{bmatrix}3 \\ 0 \end{bmatrix}+2\begin{bmatrix}1 \\ 2 \end{bmatrix}$$�
 
 $R^2$공간에 있는 기존 벡터들을 시계 반대 방향으로 90도 회전하고 싶다고 하자. 표준기저벡터는 각각 다음과 같이 이동할 것이다. 
 
-![img](http://whdbfla6.github.io/assets/linear-algebra/img20.png)
-
 
 $$
 i = \begin{bmatrix}1 \\ 0 \end{bmatrix} \Rightarrow \begin{bmatrix}0 \\ 1 \end{bmatrix}\\ j = \begin{bmatrix}0 \\ 1 \end{bmatrix} \Rightarrow \begin{bmatrix}-1 \\ 0 \end{bmatrix}\\
@@ -75,9 +73,14 @@ $$
 따라서 90도 회전(시계반대)에 대응하는 행렬은 다음과 같다
 
 
+
 $$
 A = \begin{bmatrix}0 & -1  \\ 1 & 0  \end{bmatrix}
 $$
+
+
+![img](http://whdbfla6.github.io/assets/linear-algebra/img20.png)
+
 벡터 $$v=\begin{bmatrix}1 \\ 2\end{bmatrix}$$  을 90도 시계 반대 방향으로 회전한다고 하면 $$Av=\begin{bmatrix}0 & -1  \\ 1 & 0  \end{bmatrix} \begin{bmatrix}1 \\ 2\end{bmatrix} = \begin{bmatrix}-2 \\ 1\end{bmatrix}$$​ 로 변환될 것이다. 
 
 ## 3. determinant(행렬식)
