@@ -85,9 +85,7 @@ $$
 
 > 기저의 변환
 
-선형 변환을 **기저의 변환** 측면에서 살펴보자. 
-
-$\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자
+선형 변환을 **기저의 변환** 측면에서 살펴보자. $\mathcal{X}= \begin{Bmatrix} x_1, & x_2 \end{Bmatrix}$ 가 $R^2$공간의 basis라고 하자
 
 - $\begin{bmatrix} x\end{bmatrix}_{\mathcal{X}}$ 는 **basis $x_1,x_2$ 로 나타낸 벡터 $x$ 의 좌표**를 의미 
 - $T:X\rightarrow U$인 경우에 $\begin{bmatrix} T\end{bmatrix}_ {\mathcal{X},U}$ 는 $A\begin{bmatrix} x\end{bmatrix}_ {\mathcal{X}}=\begin{bmatrix} T(x)\end{bmatrix}_ {U}$ 만족하는 행렬 $A$를 나타낸다. 
