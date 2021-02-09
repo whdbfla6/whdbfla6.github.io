@@ -87,4 +87,4 @@ $$Ax=0 \rightarrow  A^TAx=0$$
 
 $$A^TAx=0 \rightarrow  x^TA^TAx=0 = (Ax)^T(Ax)=0 \rightarrow Ax=0$$
 
-$A$ 가 full rank인 경우에 A의 null space가 trivial하다. 위에서 $A$ 와 $A^TA$의 null space가 같다는 것을 증명했기 때문에  $A^TA$의 null space또한 trivial할 것이다. 이 말을 정리하면 $A$가 가역행렬인 경우에 $A^TA$도 가역행렬이며,  Least square problem은 $\hat{x}=(A^TA)^{-1}A^Tb$ 로 unique solution을 가질 것이다. 
+$A$ 가 full rank인 경우에 A의 null space가 trivial하다. 위에서 $A$ 와 $A^TA$의 null space가 같다는 것을 증명했기 때문에  $A^TA$의 null space또한 trivial할 것이다. 이  때 $A^TA$는 정방행렬이기 때문에   Least square problem은 $\hat{x}=(A^TA)^{-1}A^Tb$ 로 unique solution을 가질 것이다. 
