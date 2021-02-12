@@ -3,7 +3,12 @@ title: "aboutme"
 permalink: /about/
 layout: single
 classes: wide
+
 ---
+
+# "기초부터 탄탄히 느려도 괜찮아! "
+
+통계학을 공부하고 있는 학생입니다! 공부한 내용을 제 것으로 만들기 위해서 블로그 포스팅을 시작했습니다. 대학원 진학 전에 통계학과 핵심 과목이라 할 수 있는 '선형대수' '수리통계학'을 복습하며 관련 내용을 포스팅하고 있습니다. 저도 공부하고 있는 입장이기 때문에 잘못된 내용이 있으면 언제든지 피드백 주시면 감사하겠습니다:)
 
 ## 학력 
 
@@ -11,14 +16,6 @@ classes: wide
 - 응용통계학과, 2017(복수전공승인)-2020, 연세대학교(서울)<br/>
 - 응용통계학과 석사, 2021(입학예정), 연세대학교(서울)
 
-
-
-## 프로젝트
-- [Project Casa](https://github.com/whoareyouwhoami/ProjectCasa), 2020.4-present, 서울 아파트 가격 예측하는 시스템 구축 / EDA 담당<br/>
-- [빅콘테스트 2020 KBO](https://github.com/Damelim/big_contest_2020_summer), 2020.8, KBO 각 팀별 승률 방어율 타율 예측 / EDA 및 모델링 담당 
-- "Web Interface Problems Analysis", 2017.3-2017.6, 중경고등학교 홈페이지를 이용자의 관점에서 인터페이스 분석<br/>
-- "Database Construction", 2018.3-2018.6, 마이크로소프트 Access를 이용해 드라마 어플리케이션에 사용될 DB구축
-  
 ## 수강 과목
 
 - 통계학입문
@@ -34,3 +31,6 @@ classes: wide
 - 회귀분석
 - 데이터사이언스를위한확률과정
 - 정보시각화
+- 딥러닝
+- 비모수통계
+- 베이즈통계
