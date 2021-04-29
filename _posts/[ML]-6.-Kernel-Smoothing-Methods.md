@@ -1,0 +1,153 @@
+---
+title: '[ML] 6. Kernel Smoothing Methods'
+use_math: true
+comments: true
+layout: single
+classes: wide
+categories:
+
+  - 머신러닝
+  - ESL
+
+---
+
+##  Kernel Smoothing Methods
+
+이 단원에서는 regression function $f(x)$ 를 추정하는데 있어서 유연성을 얻기 위한 테크닉을 다룬다. 유연성을 확보하기 위해 $x_0$ 근방의 데이터만 사용해서 fitting을 하게 되는데 이 때 kernel을 사용한다. $K_{\lambda}(x_0,x_i)$ kernel은 $x_0$로부터 $x_i$ 까지의 거리를 기반으로 해서 각 $x_i$ 에 가중치를 주며, 파라미터 $\lambda$는 neighborhood의 너비를 나타낸다. 
+
+## 1. One dimensional Kernel Smoothers
+
+1. K-Nearest neighborhoods 
+
+
+$$
+\hat{f}(x)=\operatorname{Ave}\left(y_{i} \mid x_{i} \in N_{k}(x)\right)
+$$
+K-Nearest neighborhoods  방법은 target point 근처의 k개의 점의 평균값을 구해서 함수를 추정한다. 
+
+![6.1](http://whdbfla6.github.io/assets/ml/6.1.png)
+
+해당 그림은 $x_0$ 에 가까운 30개의 점의 평균값을 이용해 함수를 추정한 예시로 함수의 모양이 울퉁불퉁한 것을 확인할 수 있다. $x_0$가 왼쪽에서 오른쪽으로 이동할 때 더 가까운 점이 발견될 때까지 동일한 $x$값을 이용해 fitting을 하기 때문에 discontinuous 하며, 함수의 모양이 discrete하게 변화하는 것을 확인할 수 있다. 이는 모든 근처 점에 대해서 동일한 가중치를 주기 때문에 발생하는 문제이며, 거리에 따라 서로다른 가중치를 주어 불연속성 문제를 해결할 수 있다. 
+
+2. Epanechnikov kernel
+
+
+$$
+\underset{\beta_{0}}{\operatorname{argmin}} \sum_{i=1}^{n}\left(Y_{i}-\beta_{0}\right)^{2} K_{h}\left(X_{i}-x\right)
+$$
+
+
+이 또한 constant를 fitting하는 방식이나, 가까운 거리에 있는 점에 더 높은 가중치를 부여한다.  이 식을 최소화하기 위해 $\beta_0$ 에 대해 미분을 하면 각 target point에서의 함수 추정치는 다음과 같은 형태다. 
+$$
+\hat{f}\left(x_{0}\right)=\frac{\sum_{i=1}^{N} K_{\lambda}\left(x_{0}, x_{i}\right) y_{i}}{\sum_{i=1}^{N} K_{\lambda}\left(x_{0}, x_{i}\right)}
+$$
+kernel 함수의 형태는 다음과 같다. 여기서 t의 절대값이 1보다 작은 경우는 $\mid x-x_{0}\mid < \lambda$ 인 경우로, 이는 $x_0$로부터 x까지의 거리가 $\lambda$보다 작은 경우에만 0이 아닌 값을 가지는 것을 의미한다. 따라서 $\lambda$값을 통해 neighborhood의 너비를 조정할 수 있다. 
+$$
+\begin{array}{c}
+K_{\lambda}\left(x_{0}, x\right)=D\left(\frac{\left|x-x_{0}\right|}{\lambda}\right)\cdots (a) \\
+D(t)=\left\{\begin{array}{ll}
+\frac{3}{4}\left(1-t^{2}\right) & \text { if }|t| \leq 1 ; \\
+0 & \text { otherwise }
+\end{array}\right.
+\end{array}
+$$
+![6.2](http://whdbfla6.github.io/assets/ml/6.2.png)
+
+
+
+추정된 함수를 보면 연속성이 보장되고 smooth해진 것을 확인할 수 있다. 
+
+3. Adaptive neighborhoods with kernel
+
+$(a)$ 식에서와 다르게 $\lambda$ 값을 constant로 부여하는 것이 아니라 function형태로 나타낼 수도 있다. 
+$$
+K_{\lambda}\left(x_{0}, x\right)=D\left(\frac{\left|x-x_{0}\right|}{h_{\lambda}\left(x_{0}\right)}\right) .
+$$
+
+4. details 
+
+- $\lambda$ 가 크다는 것은 $x_0$에서 멀리 떨어진 데이터도 고려하는 것이기 때문에 bias는 커지지만, variance는 낮아진다
+- boundary issue: metric neighborhood의 방법의 경우 일정한 너비 안의 점만 사용하기 때문에 boundary에서 상대적으로 더 적은 point를 포함할 수 밖에 없다. knn기반은 boundary 근처에 갈수록 neighborhood의 너비가 넓어진다
+- metric 기반은 근처의 데이터만 사용하기 때문에 bias가 일정하지만, knn 기반은 데이터가 부족한 경우 먼 위치의 데이터까지 사용해야 하기 때문에 bias가 훨씬 커지는 문제점이 있다
+- metric 기반은 구간에 따라서 사용하는 데이터의 수가 달라 variance가 local density에 반비례한다 (local density가 높을수록 데이터 수가 많은 것을 의미하기 때문)  knn기반은 각 target point에 대해 사용하는 데이터의 수가 일정하기 때문에 variance가 constant하다.
+
+### 1-1 Local Linear Regression
+
+위에서 살펴본 Locally weighted average는 constant로 fitting을 하기 때문에 boundary에서 bias가 커진다는 문제가 있다. 
+
+![6](http://whdbfla6.github.io/assets/ml/6.3.png)
+
+왼쪽 boundary의 경우 오른쪽 영역의 데이터에만 가중치가 부여되기 때문에 커널이 비대칭하게 적용된다. 이 그림의 경우 왼쪽 boundary의 true function이 양의 기울기를 가져 boundary 부분에서 target point보다 큰 평균값을 갖는 것을 확인할 수 있다.
+
+local linear regression은 constant로 fitting하였을 경우 boundary에서 bias가 커질 수 있는 문제점을 잡아준다. 결론부터 말하면 first order에 대한 bias correction을 해결할 수 있다. 각각의 추정치는 가중치가 커널로 부여된 weighted least square 문제를 풀어 얻을 수 있으며, 각 target point에서의 함수 추정치는 다음과 같다.
+
+
+$$
+\min _{\alpha\left(x_{0}\right), \beta\left(x_{0}\right)} \sum_{i=1}^{N} K_{\lambda}\left(x_{0}, x_{i}\right)\left[y_{i}-\alpha\left(x_{0}\right)-\beta\left(x_{0}\right) x_{i}\right]^{2}
+$$
+
+$$
+\hat{f}\left(x_{0}\right)=b\left(x_{0}\right)^{T}\left(\mathbf{B}^{T} \mathbf{W}\left(x_{0}\right) \mathbf{B}\right)^{-1} \mathbf{B}^{T} \mathbf{W}\left(x_{0}\right) \mathbf{y}
+$$
+
+
+
+- $b(x_0) = (1 x_0)$
+- $B$: $b(x_i)^T$를 행으로 갖는 $N\times 2$ 행렬
+- $W(x_0)$: $K_{\lambda}(x_0,x_i)$ 가중치를 대각성분으로 갖는 대각행렬
+
+$\hat{f}(x_0)$은 $\sum_{i=1}^Nl_i(x_0)y_i$ 로도 나타낼 수 있으며 각  $y_i$에 linear한 형태임을 확인할 수 있다
+
+이제 local linear regression이 자동으로 bias에 대한 first order를 보정해준다는 사실을 증명해볼 것이다. bias는 $E(\hat{f}(x_0))-f(x_0)$ 이며, bias를 구하기 앞서 $E(\hat{f}(x_0))$ 를 taylor expansion으로 나타내보자.
+
+
+$$
+\begin{aligned}
+\mathrm{E} \hat{f}\left(x_{0}\right)=& \sum_{i=1}^{N} l_{i}\left(x_{0}\right) f\left(x_{i}\right) \\
+=& f\left(x_{0}\right) \sum_{i=1}^{N} l_{i}\left(x_{0}\right)+f^{\prime}\left(x_{0}\right) \sum_{i=1}^{N}\left(x_{i}-x_{0}\right) l_{i}\left(x_{0}\right)
++\frac{f^{\prime \prime}\left(x_{0}\right)}{2} \sum_{i=1}^{N}\left(x_{i}-x_{0}\right)^{2} l_{i}\left(x_{0}\right)+R
+\end{aligned}
+$$
+
+
+여기서 $\sum_{i=1}^{N}\left(x_{i}-x_{0}\right) l_{i}\left(x_{0}\right)=0, \quad \sum_{i=1}^{N} l_{i}\left(x_{0}\right)=1$ 이기 때문에 bias를 구하면 $\frac{f^{\prime \prime}\left(x_{0}\right)}{2} \sum_{i=1}^{N}\left(x_{i}-x_{0}\right)^{2} l_{i}\left(x_{0}\right)+R$  부분만 남게 된다. 즉 bias가 2차 미분 이상의 term에만 의존하고 있음을 확인할 수 있다. 
+
+
+
+### 1-2 Local Polynomial Regression
+
+이번에는 local linear fit에서만 그치지 말고 d차 다항식에 fitting을 해볼 것이다.
+
+
+$$
+\min _{\alpha\left(x_{0}\right), \beta_{j}\left(x_{0}\right), j=1, \ldots, d} \sum_{i=1}^{N} K_{\lambda}\left(x_{0}, x_{i}\right)\left[y_{i}-\alpha\left(x_{0}\right)-\sum_{j=1}^{d} \beta_{j}\left(x_{0}\right) x_{i}^{j}\right]^{2}
+$$
+
+
+다음 문제를 풀어 target point $x_0$에 대한 함수 추정치를 구하면 $\hat{f}\left(x_{0}\right)=\hat{\alpha}\left(x_{0}\right)+\sum_{j=1}^{d} \hat{\beta}_{j}\left(x_{0}\right) x_{0}^{j}$ 이다. 
+
+
+
+![6](http://whdbfla6.github.io/assets/ml/6.5.png)
+
+
+
+이 그림을 살펴보면 local quadratic 을 사용했을 때 곡률에 대한 bias가 보정된 것을 확인할 수 있다.  하지만 tail 부분에서 bias가 줄어드는 것에 비해 variance가 커진다는 문제가 있다. 아래 그림은 다항식의 차수가 각각 $d=0,\ 1,\ 2$ 인 경우에 따른 variance curve로,  차수가 높아짐에 따라 꼬리 부분에서 variance가 급격히 커지는 것을 확인할 수 있다. 
+
+
+
+![6](http://whdbfla6.github.io/assets/ml/6.6.png)
+
+
+
+## 2. Selecting the Width of the Kernel
+
+
+
+
+
+## 3. Local regression in $R^p$
+
+ ## 4. Structured Local Regression Models in $R^p$
+
+###  
